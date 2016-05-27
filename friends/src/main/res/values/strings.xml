@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">Friends</string>
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">close</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="post">发表作品</string>
+    <string name="doodle">涂鸦板</string>
+    <string name="draft">草稿</string>
+    <string name="content">作品</string>
+    <string name="user">用户</string>
+    <string name="update">修改资料</string>
+    <string name="dynamic">动态</string>
+    <string name="collection">收藏</string>
+    <string name="message">消息</string>
+    <string name="record">记录</string>
+    <string name="settings">设置</string>
+    <string name="about">关于</string>
+    <string name="scanpay">扫码支付</string>
+    <string name="gasorder">加油站</string>
+    <string name="music">音乐</string>
+    <string name="gps">导航</string>
+    <string name="violation">违章查询</string>
+    <string name="focuses">关注</string>
+    <string name="fans">粉丝</string>
+    <string name="photo">图片</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_search">Search</string>
+    <string name="imate_back">Back</string>
+    <string name="edit_text_search">SEARCH</string>
+    <string name="voice_cancel">Voice Cancel</string>
+
+    <!--Database Name-->
+    <string name="database_name">database_log</string>
+    <string name="string_filler">Filler</string>
+    <!--加油站部分-->
+    <string name="dialog_distance_title">请选择检索范围</string>
+    <string name="kilometre_3">3km</string>
+    <string name="kilometre_5">5km</string>
+    <string name="kilometre_8">8km</string>
+    <string name="kilometre_10">10km</string>
+    <string name="station_price">本站油价</string>
+    <string name="province_price">省控基准油价</string>
+    <string name="text_load">正在获取加油站信息…</string>
+    <!--违章查询部分-->
+    <string name="csy_form_tip">目前仅支持小型汽车查询</string>
+    <string name="csy_btn_query">开始查询</string>
+    <string name="csy_cxdz_lab">查询地</string>
+    <string name="csy_cxdz_tip">请选择查询地</string>
+    <string name="csy_chepai_lab">车牌号</string>
+    <string name="csy_chepai_tip">请输入车牌号后6位</string>
+    <string name="csy_chejia_lab">车架号</string>
+    <string name="csy_engine_lab">发动机号</string>
+    <string name="csy_close">关闭</string>
+</resources>

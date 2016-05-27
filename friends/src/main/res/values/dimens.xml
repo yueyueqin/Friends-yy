@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_text_size">20sp</dimen>
+    <dimen name="image_width">40dp</dimen>
+    <dimen name ="image_height">40dp</dimen>
+    <dimen name="status_bar_height">25dp</dimen>
+    <dimen name="space">10dp</dimen>
+    <dimen name="tool_bar_top_padding">0dp</dimen>
+    <dimen name="margin">16dp</dimen>
+    <dimen name="sliderWidth">36dp</dimen> <!--Matches checker pattern-->
+    <dimen name="hexFieldWidth">88dp</dimen> <!-- 2 * slider width + margin. Explicit for when alpha is hidden in landscape -->
+    <dimen name="preference_thumbnail_size">48dp</dimen>
+    <!-- Keyline -->
+    <dimen name="keyline_margin_horizontal">16dp</dimen>
+    <dimen name="keyline_margin_vertical">16dp</dimen>
+
+    <dimen name="card_interval">8dp</dimen>
+    <dimen name="single_item_padding_horizontal">16dp</dimen>
+
+    <!--违章查询部分-->
+    <dimen name="csy_pd">10.0dp</dimen>
+    <dimen name="csy_mg">15.0dp</dimen>
+    <dimen name="csy_label_w">70.0dp</dimen>
+    <dimen name="csy_icon_w">40.0dp</dimen>
+    <dimen name="csy_row_h">64.0dp</dimen>
+    <dimen name="csy_item_h">52.0dp</dimen>
+    <dimen name="csy_tip_h">30.0dp</dimen>
+    <dimen name="csy_btn_h">46.0dp</dimen>
+
+    <dimen name="csy_label_ts">13.0sp</dimen>
+    <dimen name="csy_tip_ts">14.0sp</dimen>
+    <dimen name="csy_text_ts">16.0sp</dimen>
+    <dimen name="csy_title_ts">18.0sp</dimen>
+</resources>

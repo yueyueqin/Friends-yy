@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="192dp"
+    android:background="?attr/colorPrimaryDark"
+    android:orientation="vertical"
+
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+
+    >
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="192dp"
+    android:id="@+id/image"
+    android:scaleType="centerCrop"
+    android:src="@drawable/background"/>
+<View
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_status_reverse"/>
+    <TextView
+        android:id="@+id/id_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:text="请登录"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffff"
+       />
+
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_above="@id/id_username"
+        android:layout_marginBottom="16dp"
+        android:id="@+id/head"
+        android:layout_centerHorizontal="true"
+       />
+
+
+</RelativeLayout>

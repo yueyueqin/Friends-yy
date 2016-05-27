@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<com.jenzz.materialpreference.PreferenceCategory android:title="消息设置">
+    <com.jenzz.materialpreference.SwitchPreference
+        android:key="message_key"
+        android:defaultValue="true"
+        android:title="接受新消息通知"
+        />
+</com.jenzz.materialpreference.PreferenceCategory>
+    <com.jenzz.materialpreference.PreferenceCategory android:title="缓存设置">
+    <com.jenzz.materialpreference.Preference
+        android:key="clear_key"
+        android:title="清除图片缓存"
+        /></com.jenzz.materialpreference.PreferenceCategory>
+    <com.jenzz.materialpreference.PreferenceCategory android:title="模式">
+        <com.jenzz.materialpreference.SwitchPreference
+            android:key="night_mode_key"
+            android:defaultValue="false"
+            android:title="夜间模式"
+            />
+    </com.jenzz.materialpreference.PreferenceCategory>
+</PreferenceScreen>

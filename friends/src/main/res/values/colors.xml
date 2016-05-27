@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="material_blue_500">#009688</color>
+    <color name="material_blue_700">#00796B</color>
+    <color name="material_green_A200">#FD87A9</color>
+    <color name="disabled_gray">#44888888</color>
+    <color name="gray600">#757575</color>
+
+    <!--配色-->
+    <color name="primary_night">#212121</color>
+    <color name="primary_dark_night">#000000</color>
+    <color name="primary_light_night">#99212121</color>
+    <color name="accent_night">#ffee58</color><!--#FF5722-->
+    <color name="primary_text_night">#ffffff</color>
+    <color name="secondary_text_night">#fefefe</color>
+    <color name="icons_night">#FFFFFF</color>
+    <color name="divider_night">#a5FFFFFF</color>
+    <color name="background_color_night">#303030</color>
+    <color name="item_color_night">#404040</color>
+    <color name="fab_color_night">#ddffab00</color>
+
+    <!--配色-->
+    <color name="primary">#009688</color>
+    <color name="primary_dark">#00796B</color>
+    <color name="primary_light">#B2DFDB</color>
+    <color name="accent">#ff8f00</color><!--#FF5722-->
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#727272</color>
+    <color name="icons">#212121</color>
+    <color name="divider">#B6B6B6</color>
+    <color name="background_color">#E1E6EB</color>
+    <color name="item_color">#FAFAFA</color>
+    <color name="fab_color">#99ff8f00</color>
+
+    <!--加油站部分-->
+    <color name="dark_grey">#B8B8B8</color>
+    <color name="translucent">#cc808080</color>
+
+    <!--违章查询部分-->
+    <color name="csy_bg_body">#ffe9e9e9</color>
+    <color name="csy_row_on">#fff0f0f0</color>
+    <color name="csy_border">#ffd0d0d0</color>
+    <color name="csy_green">#ff3caa0f</color>
+    <color name="csy_green_on">#ff28780a</color>
+    <color name="csy_blue">#ff0a7dd2</color>
+    <color name="csy_blue_on">#ff0a64aa</color>
+    <color name="csy_label">#ff969696</color>
+    <color name="csy_text">#ff555555</color>
+    <color name="csy_hint">#ffc6c6c6</color>
+
+
+</resources>

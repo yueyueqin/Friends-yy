@@ -1,0 +1,248 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cyan.community"
+    android:versionCode="1"
+    android:versionName="1.0"
+    >
+    <!-- 添加该自定义权限 -->
+    <uses-permission android:name="cn.bmob.permission.push" />
+    <!-- 网络权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- Push SDK权限 end -->
+    <!-- 允许网络连接以及网络状态改变 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 文件存储 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+
+    <application
+        android:name="com.cyan.app.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name">
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="euuywThQUPdhgRuLyXo9U3glMYLuwjzL" />
+        <meta-data
+            android:name="com.thinkland.juheapi.openid"
+            android:value="JHeb81aec74e3c4c0c7ca0deb5e992a82a" />
+
+
+       <!-- 高德地图定位密钥-->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="34eb8cca796df07a03c48ff840db76d8"
+                           />
+        <!-- 定位需要的服务 -->
+        <service android:name="com.amap.api.location.APSService"></service>
+
+        <activity
+            android:name="com.cyan.ui.MainActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/BaseAppTheme.AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--附近的加油站信息，内含聚合数据的密钥以及百度地图的密钥-->
+        <activity
+            android:name="com.cyan.ui.GasorderActivity"
+            android:allowBackup="true"
+            android:theme="@style/BaseAppTheme.AppTheme" >
+
+        </activity>
+
+        <activity
+            android:name="com.cyan.gas.StationListActivity"
+            android:theme="@style/BaseAppTheme.AppTheme" />
+        <activity
+            android:name="com.cyan.gas.StationInfoActivity"
+            android:theme="@style/BaseAppTheme.AppTheme" />
+        <activity
+            android:name="com.cyan.gas.RouteActivity"
+            android:theme="@style/BaseAppTheme.AppTheme" />
+        <!--百度定位的server声明-->
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+        </service>
+
+        <activity
+            android:name="com.cyan.ui.ViolationActivity"
+            android:allowBackup="true"
+            android:theme="@style/BaseAppTheme.AppTheme" >
+        </activity>
+
+        <activity
+            android:name="com.cyan.violation.ShortNameList"
+            android:theme="@style/BaseAppTheme.AppTheme" />
+        <activity
+            android:name="com.cyan.violation.ProvinceList"
+            android:theme="@style/BaseAppTheme.AppTheme" />
+        <activity
+            android:name="com.cyan.violation.CityList"
+            android:theme="@style/BaseAppTheme.AppTheme" />
+        <activity
+            android:name="com.cyan.violation.WeizhangResult"
+            android:theme="@style/BaseAppTheme.AppTheme" />
+        <!--违章信息查询server的声明-->
+        <service android:name="com.cheshouye.api.client.WeizhangIntentService" />
+
+
+        <activity
+            android:name="com.cyan.ui.LoginActivity"
+            android:theme="@style/BaseAppTheme.AppTheme"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+
+        </activity>
+        <activity
+            android:name="com.cyan.ui.UserActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/BaseAppTheme.AppTheme"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+
+        </activity>
+        <activity
+            android:name="com.cyan.ui.UserInfoActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/BaseAppTheme.AppTheme">
+
+        </activity>
+        <activity
+            android:name="com.cyan.ui.RegisterActivity"
+            android:theme="@style/BaseAppTheme.AppTheme"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+
+        </activity>
+        <activity
+            android:name="com.cyan.ui.SelectPicPopupWindow"
+            android:theme="@style/MyDialogStyleBottom" />
+        <activity
+            android:name="com.cyan.ui.HeadActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+        <activity
+            android:name="com.cyan.ui.PostActivity"
+            android:theme="@style/BaseAppTheme.AppTheme"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name="com.cyan.ui.DoodleActivity"
+            android:theme="@style/BaseAppTheme.AppTheme">
+
+        </activity>
+        <activity
+            android:name="com.cyan.ui.ContentActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/BaseAppTheme.AppTheme"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+
+        </activity>
+        <activity
+            android:name="com.cyan.ui.MessageActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/BaseAppTheme.AppTheme"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name="com.cyan.ui.CollectionActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/BaseAppTheme.AppTheme" />
+        <activity
+            android:name="com.cyan.ui.SettingsActivity"
+            android:theme="@style/BaseAppTheme.AppTheme" />
+        <activity
+            android:name="com.cyan.ui.PostListActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/BaseAppTheme.AppTheme" />
+        <activity
+            android:name="com.cyan.ui.FocusActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/BaseAppTheme.AppTheme" />
+        <activity
+            android:name="com.cyan.ui.FansActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/BaseAppTheme.AppTheme" />
+        <activity
+            android:name="com.cyan.ui.RecordActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/BaseAppTheme.AppTheme" />
+        <activity
+            android:name="com.cyan.ui.AboutActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/BaseAppTheme.AppTheme"/>
+        <activity
+            android:name="com.cyan.ui.PhotoActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/BaseAppTheme.AppTheme"/>
+        <activity
+            android:name="com.cyan.ui.DraftActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/BaseAppTheme.AppTheme"/>
+        <activity
+            android:name="com.cyan.ui.SearchActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/BaseAppTheme.AppTheme"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
+        <activity
+            android:name="cn.bmob.v3.update.UpdateDialogActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+        <service
+            android:name="cn.bmob.push.lib.service.PushService"
+            android:exported="true"
+            android:label="PushService"
+            android:process="cn.bmob.push"
+            android:permission="cn.bmob.permission.push">
+            <intent-filter>
+                <action android:name="cn.bmob.push.lib.service.PushService" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name="cn.bmob.push.PushReceiver">
+            <intent-filter android:priority="2147483647"><!--优先级加最高-->
+                <!-- 系统启动完成后会调用 -->
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <!-- 解锁完成后会调用 -->
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <!-- 监听网络连通性 -->
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.cyan.receiver.MyPushMessageReceiver">
+            <intent-filter>
+                <action android:name="cn.bmob.push.action.MESSAGE" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
