@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
  * 类说明：地图导航模块
  */
 @ActivityFragmentInject(
-        contentViewId = R.layout.activity_gps,
+        contentViewId = R.layout.activity_about,
         toolbarTitle = R.string.gps
 )
 public class GpsActivity extends  BaseActivity

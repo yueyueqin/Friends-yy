@@ -50,6 +50,9 @@ public class MyApplication extends Application {
         com.thinkland.sdk.android.SDKInitializer.initialize(getApplicationContext());
 
 
+        //导航部分初始化操作 在使用 SDK 各组间之前初始化 context 信息，传入 ApplicationContext
+        SDKInitializer.initialize(this);
+
         myApplication = this;
         Bmob.initialize(getApplicationContext(), APPID);
         // 使用推送服务时的初始化操作

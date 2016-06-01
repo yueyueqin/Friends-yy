@@ -48,5 +48,14 @@
     <color name="csy_text">#ff555555</color>
     <color name="csy_hint">#ffc6c6c6</color>
 
+    <!--地图点击menu部分-->
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="blue">#04AEDA</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+
+
 
 </resources>

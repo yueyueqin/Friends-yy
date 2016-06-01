@@ -1,0 +1,37 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/bmapView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:clickable="true" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/bmapView"
+        android:layout_alignTop="@+id/bmapView"
+        android:orientation="horizontal" >
+
+        <com.cyan.gps.VerticalSeekBarNew
+            android:id="@+id/process_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="300dip"
+            android:layout_marginRight="30dip" />
+
+        <Button
+            android:id="@+id/btn_replay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2.0dip"
+            android:layout_marginLeft="5.0dip"
+            android:layout_marginRight="9.0dip"
+            android:layout_marginTop="1.0dip"
+            android:background="@drawable/btn_replay"
+            android:text=" 回放 " />
+    </LinearLayout>
+
+</RelativeLayout>

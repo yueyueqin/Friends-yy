@@ -11,8 +11,10 @@
     <!-- Push SDK权限 end -->
     <!-- 允许网络连接以及网络状态改变 -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
 
@@ -23,9 +25,13 @@
     <!-- 文件存储 -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->
+    <!-- SD卡读取权限，用户写入离线定位数据 -->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 允许应用读取低级别的系统日志文件 -->
     <uses-permission android:name="android.permission.READ_LOGS" />
+    <!-- 用于读取手机当前的状态 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -43,6 +49,41 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
 
+
+    <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" >
+    </uses-permission>
+
+   <!-- <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION">
+    </uses-permission>
+    <uses-permission android:name="android.permission.WRITE_APN_SETTINGS"></uses-permission>
+-->
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <!-- SDK1.5需要android.permission.GET_TASKS权限判断本程序是否为当前运行的应用? -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.CAMERA" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.RECORD_AUDIO" >
+    </uses-permission>
+
+    <!-- 来电消音 -->
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <!-- SDK1.5需要android.permission.GET_TASKS权限判断本程序是否为当前运行的应用? -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+
+
+
+
+
+
+
+
+
+
+
+
     <application
         android:name="com.cyan.app.MyApplication"
         android:allowBackup="true"
@@ -52,6 +93,7 @@
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="euuywThQUPdhgRuLyXo9U3glMYLuwjzL" />
+
         <meta-data
             android:name="com.thinkland.juheapi.openid"
             android:value="JHeb81aec74e3c4c0c7ca0deb5e992a82a" />
@@ -99,6 +141,13 @@
             android:process=":remote" >
         </service>
 
+        <!--导航部分的server声明-->
+        <service
+            android:name="com.baidu.navi.location.f"
+            android:enabled="true" >
+        </service>
+
+
         <activity
             android:name="com.cyan.ui.ViolationActivity"
             android:allowBackup="true"
@@ -119,6 +168,19 @@
             android:theme="@style/BaseAppTheme.AppTheme" />
         <!--违章信息查询server的声明-->
         <service android:name="com.cheshouye.api.client.WeizhangIntentService" />
+
+
+        <activity
+            android:name="com.cyan.ui.GpsActivity"
+            android:theme="@style/BaseAppTheme.AppTheme"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" />
+        <activity android:name="com.cyan.gps.Routplan"
+                  android:theme="@style/BaseAppTheme.AppTheme" />
+
+
+
+
 
 
         <activity
@@ -217,6 +279,8 @@
             android:name="cn.bmob.v3.update.UpdateDialogActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" >
         </activity>
+
+        <!--Bmob推送部分的server声明-->
         <service
             android:name="cn.bmob.push.lib.service.PushService"
             android:exported="true"
@@ -244,5 +308,14 @@
             </intent-filter>
         </receiver>
     </application>
+
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="false"
+        android:resizeable="true"
+        android:smallScreens="true" />
+
 
 </manifest>

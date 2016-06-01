@@ -144,4 +144,13 @@
         <item name="android:layout_centerVertical">true</item>
         <item name="android:scaleType">center</item>
     </style>
+
+    <!--地图点击Menu部分的主题-->
+    <!-- Base application theme. -->
+    <style name="AppTheme_Mapmenu" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 </resources>

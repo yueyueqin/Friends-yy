@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -116,6 +117,7 @@ public class GasorderFragment extends PreferenceFragment implements View.OnClick
         tv_price_b = (TextView) fragmentRootView.findViewById(R.id.tv_price_b);
 
         mMapView = (MapView) fragmentRootView.findViewById(R.id.bmapView);
+        Log.e("_________",mMapView+"");
         mBaiduMap = mMapView.getMap();
         mMapView.showScaleControl(false);
         mMapView.showZoomControls(false);
