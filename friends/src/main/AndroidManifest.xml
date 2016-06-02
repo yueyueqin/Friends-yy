@@ -52,11 +52,6 @@
 
     <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" >
     </uses-permission>
-
-   <!-- <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION">
-    </uses-permission>
-    <uses-permission android:name="android.permission.WRITE_APN_SETTINGS"></uses-permission>
--->
     <uses-permission android:name="android.permission.ACCESS_GPS" />
     <!-- SDK1.5需要android.permission.GET_TASKS权限判断本程序是否为当前运行的应用? -->
     <uses-permission android:name="android.permission.GET_TASKS" />
@@ -72,18 +67,6 @@
     <!-- SDK1.5需要android.permission.GET_TASKS权限判断本程序是否为当前运行的应用? -->
     <uses-permission android:name="android.permission.GET_TASKS" />
 
-
-
-
-
-
-
-
-
-
-
-
-
     <application
         android:name="com.cyan.app.MyApplication"
         android:allowBackup="true"
@@ -92,7 +75,7 @@
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="euuywThQUPdhgRuLyXo9U3glMYLuwjzL" />
+            android:value="tGkaymlMfX0Il47RjcoxcQ7GcXzo1GXE" />
 
         <meta-data
             android:name="com.thinkland.juheapi.openid"
@@ -143,9 +126,15 @@
 
         <!--导航部分的server声明-->
         <service
-            android:name="com.baidu.navi.location.f"
-            android:enabled="true" >
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote">
         </service>
+
+
+        <service android:enabled="true"
+                 android:name="com.cyan.music.MusicService" />
+
 
 
         <activity
@@ -169,7 +158,7 @@
         <!--违章信息查询server的声明-->
         <service android:name="com.cheshouye.api.client.WeizhangIntentService" />
 
-
+        <!--导航部分的Activity声明-->
         <activity
             android:name="com.cyan.ui.GpsActivity"
             android:theme="@style/BaseAppTheme.AppTheme"
@@ -178,8 +167,39 @@
         <activity android:name="com.cyan.gps.Routplan"
                   android:theme="@style/BaseAppTheme.AppTheme" />
 
-
-
+        <activity android:name="com.cyan.gps.OffMap"
+                  android:theme="@style/BaseAppTheme.AppTheme"
+                  android:configChanges="orientation|keyboardHidden"
+                  android:label="@string/demo_name_basemap"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.cyan.gps.Location"
+                  android:theme="@style/BaseAppTheme.AppTheme"
+                  android:configChanges="orientation|keyboardHidden"
+                  android:label="@string/demo_name_location"
+                  android:screenOrientation="portrait"/>
+        <activity android:name="com.cyan.gps.OfflineDemo"
+                  android:theme="@style/BaseAppTheme.AppTheme" />
+        <activity android:name="com.cyan.gps.Location2"
+                  android:theme="@style/BaseAppTheme.AppTheme" />
+        <activity android:name="com.cyan.gps.Poisearch"
+                  android:theme="@style/BaseAppTheme.AppTheme" />
+        <activity android:name="com.cyan.gps.Poidemo"
+                  android:theme="@style/BaseAppTheme.AppTheme" />
+        <activity android:name="com.cyan.gps.Rountplan2"
+                  android:theme="@style/BaseAppTheme.AppTheme" />
+        <activity android:name="com.cyan.gps.Footprint"
+                  android:theme="@style/BaseAppTheme.AppTheme" />
+        <activity android:name="com.cyan.gps.PathReplayActivity"
+                  android:theme="@style/BaseAppTheme.AppTheme" />
+        <!--音乐部分Activity声明-->
+        <activity
+            android:name="com.cyan.ui.MusicActivity"
+            android:theme="@style/BaseAppTheme.AppTheme"
+            android:allowBackup="true"
+            android:supportsRtl="true"/>
+        <activity
+            android:name="com.cyan.music.WebMusicActivity"
+            android:theme="@style/BaseAppTheme.AppTheme" />
 
 
 

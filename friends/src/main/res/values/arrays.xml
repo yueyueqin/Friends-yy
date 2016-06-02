@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="model">
+        <item>单曲循环</item>
+        <item>列表循环</item>
+    </string-array>
+</resources>

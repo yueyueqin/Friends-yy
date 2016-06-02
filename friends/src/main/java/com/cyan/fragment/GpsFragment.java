@@ -1,6 +1,9 @@
 package com.cyan.fragment;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 import android.text.Editable;
@@ -19,6 +22,7 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
+import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
@@ -54,22 +58,22 @@ import com.baidu.mapapi.search.sug.SuggestionSearch;
 import com.baidu.mapapi.search.sug.SuggestionSearchOption;
 import com.cyan.community.R;
 
-
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * User: 杨月(1298375722@qq.com)
  * Date: 2016-05-25
  * Time: 10:41
  * 类说明：
- * 此demo用来展示如何进行驾车、步行、公交路线搜索并在地图使用RouteOverlay、TransitOverlay绘制
+ * 用来展示如何进行驾车、步行、公交路线搜索并在地图使用RouteOverlay、TransitOverlay绘制
  * 同时展示如何进行节点浏览并弹出泡泡
  *
  */
 public class GpsFragment extends PreferenceFragment implements
         BaiduMap.OnMapClickListener, OnGetRoutePlanResultListener, TextWatcher,
-        OnGetSuggestionResultListener
+        OnGetSuggestionResultListener,View.OnClickListener
 {
 
     private boolean isFirstLoc = true;
@@ -92,7 +96,7 @@ public class GpsFragment extends PreferenceFragment implements
     private TextView popupText = null;// 泡泡view
     AutoCompleteTextView start;
     AutoCompleteTextView end;
-    SuggestionSearch suggestionSearch;
+   SuggestionSearch suggestionSearch;
     private LatLng latLng;// 当前经纬度信息
     public static int distance;
 
@@ -105,21 +109,55 @@ public class GpsFragment extends PreferenceFragment implements
 
     public static ArrayList<String> arrayList;
 
+    private SDKReceiver mReceiver;
+
     public static GpsFragment newInstance(){
         GpsFragment gpsFragment=new GpsFragment();
         return gpsFragment;
     }
 
+private  Button drive,transit,walk;
+
+
+    /**
+     * 构造广播监听类，监听 SDK key 验证以及网络异常广播
+     */
+    public class SDKReceiver extends BroadcastReceiver
+    {
+        public void onReceive(Context context, Intent intent) {
+            String s = intent.getAction();
+            if (s.equals(SDKInitializer.SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_ERROR)) {
+                Toast.makeText(getActivity(), R.string.key_error,
+                        Toast.LENGTH_LONG).show();
+            } else if (s
+                    .equals(SDKInitializer.SDK_BROADCAST_ACTION_STRING_NETWORK_ERROR)) {
+                Toast.makeText(getActivity(), "网络出错！",
+                        Toast.LENGTH_LONG).show();
+            }
+        }
+    }
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
 
+        // 注册 SDK 广播监听者
+        IntentFilter iFilter = new IntentFilter();
+        iFilter.addAction(SDKInitializer.SDK_BROADTCAST_ACTION_STRING_PERMISSION_CHECK_ERROR);
+        iFilter.addAction(SDKInitializer.SDK_BROADCAST_ACTION_STRING_NETWORK_ERROR);
+        mReceiver = new SDKReceiver();
+        getActivity().registerReceiver(mReceiver, iFilter);
         mLocClient = new LocationClient(getActivity());
         myListener = new MyLocationListenner();
         mLocClient.registerLocationListener(myListener);
         CharSequence titleLable = "路线规划功能";
        getActivity(). setTitle(titleLable);
+
+        suggestionSearch = SuggestionSearch.newInstance();
+        suggestionSearch.setOnGetSuggestionResultListener(this);
+        sugAdapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_dropdown_item_1line);
+
     }
 
     private View fragmentView;
@@ -131,15 +169,12 @@ public class GpsFragment extends PreferenceFragment implements
         fragmentView = inflater.inflate(R.layout.activity_gps, null);
         initView(fragmentView);
         return fragmentView;
+
     }
 
     private void initView(View fragmentRootView)
     {
 
-        suggestionSearch = SuggestionSearch.newInstance();
-        suggestionSearch.setOnGetSuggestionResultListener(this);
-        sugAdapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_dropdown_item_1line);
 
         start = (AutoCompleteTextView)fragmentRootView. findViewById(R.id.start);
         end = (AutoCompleteTextView)fragmentRootView. findViewById(R.id.end);
@@ -174,14 +209,21 @@ public class GpsFragment extends PreferenceFragment implements
         arrayList = new ArrayList<String>();
         end.addTextChangedListener(this);
         start.addTextChangedListener(this);
+
+
+        drive=(Button)fragmentRootView.findViewById(R.id.drive);
+        Log.e("drive++++++++",drive+"");
+        walk=(Button)fragmentRootView.findViewById(R.id.walk);
+        transit=(Button)fragmentRootView.findViewById(R.id.transit);
+        drive.setOnClickListener(this);
+        walk.setOnClickListener(this);
+        transit.setOnClickListener(this);
+
     }
 
-    /**
-     * 发起路线规划搜索示例
-     *
-     * @param v
-     */
-    public void SearchButtonProcess(View v) {
+    @Override
+    public void onClick(View v)
+    {
         // 重置浏览节点的路线数据
         route = null;
         mBtnPre.setVisibility(View.INVISIBLE);
@@ -202,6 +244,50 @@ public class GpsFragment extends PreferenceFragment implements
                 .toString().trim());
 
         // 实际使用中请对起点终点城市进行正确的设定
+        if (v.getId()==R.id.walk)
+        {
+            mSearch.walkingSearch((new WalkingRoutePlanOption()).from(stNode)
+                    .to(enNode));
+        }
+        if (v.getId()==R.id.drive)
+        {
+            Log.e("---------------","点击监听是否触发");
+            mSearch.drivingSearch((new DrivingRoutePlanOption()).from(stNode)
+                    .to(enNode));
+        }
+        if (v.getId()==R.id.transit)
+        {
+            mSearch.transitSearch((new TransitRoutePlanOption()).from(stNode)
+                    .city(city).to(enNode));
+        }
+    }
+
+    /**
+     * 发起路线规划搜索示例
+     *
+     * @param v
+     */
+    /*public void SearchButtonProcess(View v) {
+        // 重置浏览节点的路线数据
+        route = null;
+        mBtnPre.setVisibility(View.INVISIBLE);
+        mBtnNext.setVisibility(View.INVISIBLE);
+        mBaidumap.clear();
+
+        PlanNode stNode = null;
+        if (start.getText().toString().equals("我的位置")) {
+            stNode = PlanNode.withLocation(latLng);
+        } else {
+            stNode = PlanNode.withCityNameAndPlaceName(city, start.getText()
+                    .toString().trim());
+        }
+          // 设置起终点信息，对于tranist search 来说，城市名无意义
+        PlanNode enNode = null;
+
+        enNode = PlanNode.withCityNameAndPlaceName(city, end.getText()
+                .toString().trim());
+
+        // 实际使用中请对起点终点城市进行正确的设定
         if (v.getId() == R.id.drive) {
             mSearch.drivingSearch((new DrivingRoutePlanOption()).from(stNode)
                     .to(enNode));
@@ -212,7 +298,7 @@ public class GpsFragment extends PreferenceFragment implements
             mSearch.walkingSearch((new WalkingRoutePlanOption()).from(stNode)
                     .to(enNode));
         }
-    }
+    }*/
 
     /**
      * 节点浏览示例
@@ -368,7 +454,7 @@ public class GpsFragment extends PreferenceFragment implements
             List<CityInfo> list = result.getSuggestAddrInfo()
                     .getSuggestEndCity();
 
-            Log.i("info", list.toString());
+            Log.i("这个是空的啊？？？", list+"");
             return;
         }
         if (result.error == SearchResult.ERRORNO.NO_ERROR) {
@@ -522,6 +608,8 @@ public class GpsFragment extends PreferenceFragment implements
         mMapView.onDestroy();
         suggestionSearch.destroy();
         super.onDestroy();
+        // 取消监听 SDK 广播
+        getActivity().unregisterReceiver(mReceiver);
     }
 
     @Override

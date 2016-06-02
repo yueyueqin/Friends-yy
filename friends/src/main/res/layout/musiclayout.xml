@@ -1,0 +1,74 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <AutoCompleteTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edittext"
+        android:singleLine="true"
+        android:completionThreshold="1"
+        android:completionHint="请注意:点击列表自动播放"
+
+        />
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@+id/edittext"
+        android:onClick="click"
+        />
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/localmusiclayout"
+        android:layout_below="@+id/edittext"
+        >
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/localtext"-->
+            <!--android:text="本地搜索结果"-->
+
+            <!--/>-->
+        <!--<ListView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="500px"-->
+            <!--android:id="@+id/localmusiclist"-->
+            <!--android:layout_below="@+id/localtext"-->
+            <!--&gt;</ListView>-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="5px" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/webmusiclayout"
+        android:layout_below="@+id/localmusiclayout"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="网络搜索结果"
+            android:id="@+id/webtext"/>
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/listview"
+            android:layout_below="@+id/webtext"
+            ></ListView>
+    </RelativeLayout>
+
+
+</RelativeLayout>

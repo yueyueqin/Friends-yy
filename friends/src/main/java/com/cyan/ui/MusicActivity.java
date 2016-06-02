@@ -20,7 +20,7 @@ import butterknife.InjectView;
  * 类说明：音乐功能
  */
 @ActivityFragmentInject(
-        contentViewId = R.layout.activity_music,
+        contentViewId = R.layout.activity_about,
         toolbarTitle = R.string.music
 )
 public class MusicActivity extends  BaseActivity

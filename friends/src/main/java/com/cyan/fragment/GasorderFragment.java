@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -70,6 +71,8 @@ public class GasorderFragment extends PreferenceFragment implements View.OnClick
     private int mDistance = 3000;
     private Marker lastMarker = null;
 
+    private Button bt_10km, bt_3km, bt_5km, bt_8km;
+
 
     public static GasorderFragment newInstance()
     {
@@ -83,8 +86,6 @@ public class GasorderFragment extends PreferenceFragment implements View.OnClick
         super.onCreate(savedInstanceState);
         mContext = getActivity();
         stationData = new StationData(mHandler);
-
-
     }
 
     private View fragmentView;
@@ -117,7 +118,7 @@ public class GasorderFragment extends PreferenceFragment implements View.OnClick
         tv_price_b = (TextView) fragmentRootView.findViewById(R.id.tv_price_b);
 
         mMapView = (MapView) fragmentRootView.findViewById(R.id.bmapView);
-        Log.e("_________",mMapView+"");
+        Log.e("_________", mMapView + "");
         mBaiduMap = mMapView.getMap();
         mMapView.showScaleControl(false);
         mMapView.showZoomControls(false);
@@ -139,6 +140,18 @@ public class GasorderFragment extends PreferenceFragment implements View.OnClick
         option.setNeedDeviceDirect(true);// 在网络定位时，是否需要设备方向
         mLocationClient.setLocOption(option);
 
+
+
+      /*  bt_3km.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+
+                    distanceSearch("3km >", 3000);
+
+            }
+        });*/
     }
 
     public void setMarker(ArrayList<Station> list)
@@ -265,7 +278,7 @@ public class GasorderFragment extends PreferenceFragment implements View.OnClick
      *
      * @param v 点击的view
      */
-    public void onDialogClick(View v)
+   /* public void onDialogClick(View v)
     {
         switch (v.getId()) {
             case R.id.bt_3km:
@@ -283,7 +296,7 @@ public class GasorderFragment extends PreferenceFragment implements View.OnClick
             default:
                 break;
         }
-    }
+    }*/
 
     /**
      * 根据distance,获取当前位置附近的加油站
@@ -340,6 +353,19 @@ public class GasorderFragment extends PreferenceFragment implements View.OnClick
                 infoIntent.putExtra("locLon", loc.getLongitude());
                 startActivity(infoIntent);
                 break;
+            case R.id.bt_3km:
+                distanceSearch("3km >", 3000);
+                break;
+            case R.id.bt_5km:
+                distanceSearch("5km >", 5000);
+                break;
+            case R.id.bt_8km:
+                distanceSearch("8km >", 8000);
+                break;
+            case R.id.bt_10km:
+                distanceSearch("10km >", 10000);
+                break;
+
             default:
                 break;
         }
@@ -362,6 +388,15 @@ public class GasorderFragment extends PreferenceFragment implements View.OnClick
         selectDialog.setContentView(view, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
         selectDialog.setCanceledOnTouchOutside(true);
         selectDialog.show();
+        bt_3km = (Button) view.findViewById(R.id.bt_3km);
+        bt_5km = (Button) view.findViewById(R.id.bt_5km);
+        bt_8km = (Button) view.findViewById(R.id.bt_8km);
+        bt_10km = (Button) view.findViewById(R.id.bt_10km);
+        Log.e("bt_3km????????", "" + bt_3km);
+          bt_3km.setOnClickListener(this);
+        bt_5km.setOnClickListener(this);
+        bt_8km.setOnClickListener(this);
+        bt_10km.setOnClickListener(this);
     }
 
     @SuppressLint("InflateParams")
@@ -371,8 +406,6 @@ public class GasorderFragment extends PreferenceFragment implements View.OnClick
             loadingDialog.show();
             return;
         }
-
-
         loadingDialog = new Dialog(mContext, R.style.dialog_loading);
         View view = LayoutInflater.from(mContext).inflate(R.layout.dialog, null);
         loadingDialog.setContentView(view, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
