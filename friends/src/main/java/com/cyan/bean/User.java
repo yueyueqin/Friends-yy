@@ -6,7 +6,8 @@ import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 
 /**
- * Created by Administrator on 2015/9/25.
+ * @author YueYue
+ *
  */
 
 public class User extends BmobUser  {

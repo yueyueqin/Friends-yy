@@ -3,23 +3,22 @@ package com.cyan.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.cyan.app.MyApplication;
 import com.cyan.adapter.PostAdapter;
 import com.cyan.annotation.ActivityFragmentInject;
+import com.cyan.app.MyApplication;
 import com.cyan.bean.Post;
 import com.cyan.community.R;
 import com.cyan.listener.OnItemClickListener;
 import com.cyan.module.post.presenter.PostPresenter;
 import com.cyan.module.post.presenter.PostPresenterImpl;
 import com.cyan.module.post.view.LoadPostView;
-import com.cyan.widget.refreshlayout.RefreshLayout;
 import com.cyan.util.PraiseUtils;
 import com.cyan.widget.recyclerview.EasyRecyclerView;
+import com.cyan.widget.refreshlayout.RefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +35,8 @@ import cn.bmob.v3.BmobQuery;
         toolbarTitle = R.string.collection
 )
 public class CollectionActivity extends RefreshActivity implements LoadPostView,RefreshLayout.OnRefreshListener{
-    @InjectView(R.id.toolbar)
-    Toolbar toolbar;
+    /*@InjectView(R.id.toolbar)
+    Toolbar toolbar;*/
     @InjectView(R.id.list)
     EasyRecyclerView collectionList;
     private int j=0;

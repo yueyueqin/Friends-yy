@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
  * 类说明：扫码支付功能
  */
 @ActivityFragmentInject(
-        contentViewId = R.layout.activity_scanpay,
+        contentViewId = R.layout.activity_about,
         toolbarTitle = R.string.scanpay
 )
 public class ScanpayActivity extends  BaseActivity
