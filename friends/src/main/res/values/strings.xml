@@ -97,7 +97,7 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_path_replay">PathReplayActivity</string>
 
-
-
+    <!--车辆信息录入界面部分-->
+    <string name="actionbar_activity_not_found">Failed to open intent&#8230;</string>
 
 </resources>

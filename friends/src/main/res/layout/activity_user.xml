@@ -100,14 +100,23 @@
                     android:paddingBottom="8dip"
                     android:textColor="?android:attr/textColorPrimary"
                     />
-                <ToggleButton
+                <!--<ToggleButton
                     android:id="@+id/sex_choice_switch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:textOn="男"
                     android:textOff="女"
-                    android:checked="false" />
+                    android:checked="false" />-->
+                <CheckBox
+                    android:id="@+id/sex_choice_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:button="@drawable/selector_sex_choice"
+                    android:checked="true"
+                    android:scaleType="centerInside" />
             </RelativeLayout>
             <View
                 android:layout_width="match_parent"
@@ -146,6 +155,39 @@
                     />
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#eeeeee"
+                />
+            <RelativeLayout
+                android:id="@+id/user_car"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+
+                >
+                <TextView
+                    android:id="@+id/user_car_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:text="车辆信息"
+                    android:layout_centerVertical="true"
+
+                    />
+                <TextView
+                    android:id="@+id/user_car_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:paddingTop="8dip"
+                    android:hint="点击进行注册"
+                    android:paddingBottom="8dip"
+                    />
+            </RelativeLayout>
         </LinearLayout>
 
 

@@ -15,11 +15,12 @@
         android:src="@drawable/back" />
 
     <TextView
+        android:id="@+id/tv_order"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
         android:layout_centerInParent="true"
         android:gravity="center"
-        android:text="@string/app_name"
+        android:text="预约加油跳转"
         android:textColor="@android:color/black"
         android:textSize="20sp" />
 

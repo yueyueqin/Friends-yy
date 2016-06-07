@@ -227,14 +227,22 @@
             android:theme="@android:style/Theme.Translucent" />
         <!-- bmob pay sdk activity end -->
 
+        <!--预约加油信息填写Activity声明-->
+        <activity
+            android:name="com.cyan.gas.Information_fill"
+            android:theme="@android:style/Theme.Translucent" />
+        <activity
+            android:name="com.cyan.gas.Information_detail"
+            android:theme="@android:style/Theme.Translucent" />
+        <activity
+            android:name="com.cyan.gas.Qr_codeActivity"
+            android:theme="@style/BaseAppTheme.AppTheme"   />
 
+        <!--车辆信息录入Activity声明-->
 
-
-
-
-
-
-
+        <activity
+            android:name="com.cyan.ui.CarInfoActivity"
+            android:theme="@android:style/Theme.Translucent" />
 
 
 

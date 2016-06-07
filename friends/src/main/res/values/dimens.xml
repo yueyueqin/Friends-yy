@@ -35,6 +35,10 @@
     <!--音乐部分-->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <!--汽车信息录入界面部分-->
+    <dimen name="actionbar_height">48dip</dimen>
+    <dimen name="actionbar_item_width">48dip</dimen>
+
 
 
 </resources>

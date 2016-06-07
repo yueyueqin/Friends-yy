@@ -16,7 +16,7 @@ import com.cyan.community.R;
 public class StationInfoActivity extends Activity implements OnClickListener {
 
 	private Context mContext;
-	private TextView tv_title_right, tv_name, tv_distance, tv_area, tv_addr;
+	private TextView tv_title_right, tv_name, tv_distance, tv_area, tv_addr,tv_order;
 	private ImageView iv_back;
 
 	private ScrollView sv;
@@ -40,6 +40,8 @@ public class StationInfoActivity extends Activity implements OnClickListener {
 		tv_addr = (TextView) findViewById(R.id.tv_addr);
 		iv_back = (ImageView) findViewById(R.id.iv_back);
 		iv_back.setOnClickListener(this);
+		tv_order=(TextView)findViewById(R.id.tv_order);
+		tv_order.setOnClickListener(this);
 		tv_title_right = (TextView) findViewById(R.id.tv_title_button);
 		tv_title_right.setText("导航 >");
 		tv_title_right.setOnClickListener(this);
@@ -84,6 +86,13 @@ public class StationInfoActivity extends Activity implements OnClickListener {
 			intent.putExtra("locLon", getIntent().getDoubleExtra("locLon", 0));
 			startActivity(intent);
 			break;
+			case  R.id.tv_order:
+				Intent intent1=new Intent(mContext,Information_fill.class);
+				Bundle bundle=new Bundle();
+				bundle.putString("Name", s.getName());
+				bundle.putParcelableArrayList("Gas", s.getGastPriceList());
+				intent1.putExtras(bundle);
+				startActivity(intent1);
 		default:
 			break;
 		}

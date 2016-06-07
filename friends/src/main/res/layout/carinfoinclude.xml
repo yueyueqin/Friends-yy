@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:id="@+id/carinfo_scroll">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/caruser_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_settings_item_down"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp" >
+
+        <TextView
+            style="@style/TextTheme.tipstheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingBottom="8dip"
+            android:paddingTop="8dip"
+            android:text="品牌" />
+        <Spinner
+            android:id="@+id/caruser_brand"
+            android:gravity="right"
+
+            style="@style/TextTheme.tipstheme_second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/user_sign_tips"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="100dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:paddingBottom="8dip"
+            android:paddingTop="8dip"
+             />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/caruser_layout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_settings_item_down"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp" >
+
+        <TextView
+            style="@style/TextTheme.tipstheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingBottom="8dip"
+            android:paddingTop="8dip"
+            android:text="标志" />
+        <ImageView
+            android:id="@+id/caruser_sign"
+            style="@style/TextTheme.tipstheme_second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/user_sign_tips"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="100dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:paddingBottom="8dip"
+            android:paddingTop="8dip"
+             />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/caruser_layout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_settings_item_down"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp" >
+
+        <TextView
+            style="@style/TextTheme.tipstheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingBottom="8dip"
+            android:paddingTop="8dip"
+            android:text="型号" />
+        <Spinner
+            android:id="@+id/caruser_type"
+            android:gravity="right"
+
+            style="@style/TextTheme.tipstheme_second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/user_sign_tips"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="100dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:paddingBottom="8dip"
+            android:paddingTop="8dip"
+            android:text="车辆型号" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/caruser_layout7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_settings_item_down"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp" >
+
+        <TextView
+            style="@style/TextTheme.tipstheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingBottom="8dip"
+            android:paddingTop="8dip"
+            android:text="车身级别" />
+        <Spinner
+            android:id="@+id/caruser_bodylevel"
+            android:gravity="right"
+
+            style="@style/TextTheme.tipstheme_second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/user_sign_tips"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="100dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:paddingBottom="8dip"
+            android:paddingTop="8dip"
+            android:text="请输入车身级别" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/caruser_layout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_settings_item_down"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp" >
+
+        <TextView
+            style="@style/TextTheme.tipstheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingBottom="8dip"
+            android:paddingTop="8dip"
+            android:text="车牌号" />
+        <EditText
+            android:id="@+id/caruser_plate"
+            style="@style/TextTheme.tipstheme_second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/user_sign_tips"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="100dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:paddingBottom="8dip"
+            android:paddingTop="8dip"
+            android:text="请输入车牌号" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/caruser_layout6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_settings_item_down"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp" >
+
+        <TextView
+            style="@style/TextTheme.tipstheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingBottom="8dip"
+            android:paddingTop="8dip"
+            android:text="发动机号" />
+        <EditText
+            android:id="@+id/caruser_engine"
+            style="@style/TextTheme.tipstheme_second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/user_sign_tips"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="100dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:paddingBottom="8dip"
+            android:paddingTop="8dip"
+            android:text="请输入发动机车号" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/caruser_layout8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_settings_item_down"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp" >
+
+        <TextView
+            style="@style/TextTheme.tipstheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingBottom="8dip"
+            android:paddingTop="8dip"
+            android:text="里程数" />
+        <EditText
+            android:id="@+id/caruser_mileage"
+            style="@style/TextTheme.tipstheme_second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/user_sign_tips"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="100dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:paddingBottom="8dip"
+            android:paddingTop="8dip"
+            android:text="请输入里程数" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/caruser_layout9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_settings_item_down"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp" >
+
+        <TextView
+            style="@style/TextTheme.tipstheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingBottom="8dip"
+            android:paddingTop="8dip"
+            android:text="汽油量"/>
+        <EditText
+            android:id="@+id/caruser_gasoline"
+            style="@style/TextTheme.tipstheme_second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/user_sign_tips"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="100dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:paddingBottom="8dip"
+            android:paddingTop="8dip"
+            android:text="请输入汽油量" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/caruser_layout10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_settings_item_down"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp" >
+
+        <TextView
+            style="@style/TextTheme.tipstheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingBottom="8dip"
+            android:paddingTop="8dip"
+            android:text="发动机性能" />
+        <CheckBox
+            android:id="@+id/caruser_engineper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:button="@drawable/selector_carsituation"
+            android:checked="true"
+            android:scaleType="centerInside" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/caruser_layout11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_settings_item_down"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp" >
+
+        <TextView
+            style="@style/TextTheme.tipstheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingBottom="8dip"
+            android:paddingTop="8dip"
+            android:text="变速器性能" />
+        <CheckBox
+            android:id="@+id/caruser_transmission"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:button="@drawable/selector_carsituation"
+            android:checked="true"
+            android:scaleType="centerInside" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/caruser_layout12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_settings_item_down"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp" >
+
+        <TextView
+            style="@style/TextTheme.tipstheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingBottom="8dip"
+            android:paddingTop="8dip"
+            android:text="车灯" />
+        <CheckBox
+            android:id="@+id/light_choice_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:button="@drawable/selector_carsituation"
+            android:checked="true"
+            android:scaleType="centerInside" />
+    </RelativeLayout>
+
+</LinearLayout>
+    </ScrollView>

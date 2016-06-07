@@ -25,12 +25,13 @@
                 android:text="@string/csy_cxdz_lab" />
 
             <RelativeLayout
+                android:id="@+id/cx_city"
                 android:layout_width="fill_parent"
                 android:layout_height="@dimen/csy_item_h"
                 android:layout_gravity="center_vertical" >
 
                 <TextView
-                    android:id="@+id/cx_city"
+                   android:id="@+id/tv_cx"
                     style="@style/csy_textbox1"
                     android:hint="@string/csy_cxdz_tip" />
 

@@ -1,0 +1,205 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff" 
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_settings_item_down"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp" >
+
+            <TextView
+                style="@style/TextTheme.tipstheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="姓名：" />
+            <TextView
+                android:id="@+id/orderd_name"
+                style="@style/TextTheme.tipstheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="您的姓名" />
+
+        </RelativeLayout>
+
+     
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_settings_item_down"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp" >
+
+            <TextView
+                style="@style/TextTheme.tipstheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingBottom="8dip"
+                android:paddingTop="8dip"
+                android:text="时间：" />
+            <TextView
+                android:id="@+id/orderd_data"
+                style="@style/TextTheme.tipstheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="订单日期" />
+
+        </RelativeLayout>
+
+     
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp" >
+
+            <TextView
+                android:id="@+id/order_jiayouzhan"
+                style="@style/TextTheme.tipstheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingBottom="8dip"
+                android:paddingTop="8dip"
+                android:text="加油站：" />
+            <TextView
+                android:id="@+id/orderd_gas"
+                style="@style/TextTheme.tipstheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="选择的加油站" />
+        </RelativeLayout>
+
+      
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_settings_item_down"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp" >
+
+            <TextView
+                style="@style/TextTheme.tipstheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingBottom="8dip"
+                android:paddingTop="8dip"
+                android:text="加油型号：" />
+            <TextView
+                android:id="@+id/orderd_model"
+                style="@style/TextTheme.tipstheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="加油型号" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp" >
+
+            <TextView
+                style="@style/TextTheme.tipstheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingBottom="8dip"
+                android:paddingTop="8dip"
+                android:text="加油量：" />
+            <TextView
+                android:id="@+id/orderd_volume"
+                style="@style/TextTheme.tipstheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="加油量" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_settings_item_down"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp" >
+
+            <TextView
+                android:id="@+id/settings_cache_tips"
+                style="@style/TextTheme.tipstheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:text="总计：" />
+            <TextView
+                android:id="@+id/orderd_total"
+                android:layout_alignParentRight="true"
+                style="@style/TextTheme.tipstheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:hint="总计"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/user_pay"
+                     style="@style/TextTheme.tipstheme_buttontext"
+                    android:layout_width="88dp"
+                    android:layout_height="44dp"
+                    
+                    android:layout_alignParentLeft="true"
+                    android:background="@drawable/selector_logout"
+                    android:gravity="center"
+                    android:paddingBottom="12dip"
+                    android:paddingTop="12dip"
+                    android:text="支   付" />
+
+                <TextView
+                    android:id="@+id/user_logout01"
+                    style="@style/TextTheme.tipstheme_buttontext"
+                    android:layout_width="88dp"
+                    android:layout_height="44dp"
+                   
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/selector_logout"
+                    android:gravity="center"
+                    android:paddingBottom="12dip"
+                    android:paddingTop="12dip"
+                    android:text="预约" />
+
+
+            
+        </RelativeLayout>
+        
+    </LinearLayout>
+    
+</ScrollView>

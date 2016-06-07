@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -15,8 +14,8 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.bumptech.glide.Glide;
-import com.cyan.app.MyApplication;
 import com.cyan.annotation.ActivityFragmentInject;
+import com.cyan.app.MyApplication;
 import com.cyan.bean.User;
 import com.cyan.common.Constants;
 import com.cyan.community.R;
@@ -42,8 +41,8 @@ import cn.bmob.v3.datatype.BmobFile;
 )
 public class UserActivity extends BaseActivity implements SendUserView,SendFileView{
 
-    @InjectView(R.id.toolbar)
-    Toolbar toolbar;
+   /* @InjectView(R.id.toolbar)
+    Toolbar toolbar;*/
     User user, myUser;
     Bitmap photo;
     @InjectView(R.id.user_icon_tips)
@@ -63,7 +62,7 @@ public class UserActivity extends BaseActivity implements SendUserView,SendFileV
     @InjectView(R.id.user_sign_text)
     EditText userSignText;
     private UserPresenter userPresenter;
-   private FilePresenter filePresenter;
+    private FilePresenter filePresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,7 +84,7 @@ public class UserActivity extends BaseActivity implements SendUserView,SendFileV
 
     @Override
     public void toastSendFailure(int code, String msg) {
-       toast("更新失败");
+        toast("更新失败");
     }
 
     @Override
@@ -95,17 +94,17 @@ public class UserActivity extends BaseActivity implements SendUserView,SendFileV
 
     @Override
     public void dismissCircleDialog() {
-       pd.dismiss();
+        pd.dismiss();
     }
 
     @Override
     public void updateHorizonalDialog(Integer i) {
-      dialog.setProgress(i);
+        dialog.setProgress(i);
     }
 
     @Override
     public void toastUploadSuccess() {
-      toast("上传成功");
+        toast("上传成功");
     }
 
     @Override
@@ -115,13 +114,13 @@ public class UserActivity extends BaseActivity implements SendUserView,SendFileV
 
     @Override
     public void showHorizonalDialog() {
-            dialog = new ProgressDialog(UserActivity.this);
-            dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-            dialog.setTitle("上传中...");
-            dialog.setIndeterminate(false);
-            dialog.setCancelable(false);
-            dialog.setCanceledOnTouchOutside(false);
-            dialog.show();
+        dialog = new ProgressDialog(UserActivity.this);
+        dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        dialog.setTitle("上传中...");
+        dialog.setIndeterminate(false);
+        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
 
 
 
@@ -135,7 +134,7 @@ public class UserActivity extends BaseActivity implements SendUserView,SendFileV
 
     @Override
     public void dismissHorizonalDialog() {
-      dialog.dismiss();
+        dialog.dismiss();
     }
 
 
@@ -149,7 +148,7 @@ public class UserActivity extends BaseActivity implements SendUserView,SendFileV
                 if (!userSignText.getText().toString().equals(myUser.getIntro()))
                     user.setIntro(userSignText.getText().toString());
                 if (f!=null)
-                   filePresenter.sendFile(f);
+                    filePresenter.sendFile(f);
                 else
                     userPresenter.update(user);
                 break;
@@ -172,7 +171,7 @@ public class UserActivity extends BaseActivity implements SendUserView,SendFileV
         else sexChoiceSwitch.setChecked(false);
         if (myUser.getIntro() != null)
         { userSignText.setText(myUser.getIntro());
-        userSignText.setSelection(myUser.getIntro().length());}
+            userSignText.setSelection(myUser.getIntro().length());}
         else userSignText.setHint("说点什么吧");
         userIconImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -205,7 +204,7 @@ public class UserActivity extends BaseActivity implements SendUserView,SendFileV
                 userIconImage.setImageBitmap(photo);
                 f= BitmapUtil.saveBitmap(UserActivity.this, photo, Constants.PHOTO_PATH, "head.jpg");
 
-               break;
+                break;
             default:
                 break;
 

@@ -8,22 +8,21 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Switch;
-import android.widget.TextView;
-import android.widget.Toast;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.cheshouye.api.client.WeizhangClient;
 import com.cheshouye.api.client.WeizhangIntentService;
 import com.cheshouye.api.client.json.CarInfo;
 import com.cheshouye.api.client.json.CityInfoJson;
 import com.cheshouye.api.client.json.InputConfigJson;
 import com.cyan.community.R;
-import com.cyan.ui.MainActivity;
 import com.cyan.violation.ProvinceList;
 import com.cyan.violation.ShortNameList;
 import com.cyan.violation.WeizhangResult;
@@ -39,9 +38,9 @@ public class ViolationFragment extends PreferenceFragment implements View.OnClic
 {
     private String defaultChepai = "粤"; // 粤=广东
 
-    private TextView short_name;
-    private TextView query_city;
-    private View btn_cpsz;
+    private TextView short_name,tv_cx;
+    private RelativeLayout query_city;
+    private RelativeLayout btn_cpsz;
     private Button btn_query;
 
     private EditText chepai_number;
@@ -51,8 +50,9 @@ public class ViolationFragment extends PreferenceFragment implements View.OnClic
     // 行驶证图示
     private View popXSZ;
 
-    public static ViolationFragment newInstance(){
-        ViolationFragment violationFragment=new ViolationFragment();
+    public static ViolationFragment newInstance()
+    {
+        ViolationFragment violationFragment = new ViolationFragment();
         return violationFragment;
 
     }
@@ -62,9 +62,9 @@ public class ViolationFragment extends PreferenceFragment implements View.OnClic
     {
         super.onCreate(savedInstanceState);
 
-        Log.d("初始化服务代码","");
+        Log.d("初始化服务代码", "");
         Intent weizhangIntent = new Intent(getActivity(), WeizhangIntentService.class);
-        weizhangIntent.putExtra("appId","您的appId");// 您的appId
+        weizhangIntent.putExtra("appId", "您的appId");// 您的appId
         weizhangIntent.putExtra("appKey", "您的appKey");// 您的appKey
         getActivity().startService(weizhangIntent);
     }
@@ -79,25 +79,27 @@ public class ViolationFragment extends PreferenceFragment implements View.OnClic
         initView(fragmentView);
         return fragmentView;
     }
+
     private void initView(View fragmentRootView)
     {
         // 标题
-        TextView txtTitle = (TextView)fragmentRootView. findViewById(R.id.txtTitle);
+        TextView txtTitle = (TextView) fragmentRootView.findViewById(R.id.txtTitle);
 
         // ********************************************************
 
         // 选择省份缩写
-        query_city = (TextView) fragmentRootView.findViewById(R.id.cx_city);
-        chepai_number = (EditText)fragmentRootView. findViewById(R.id.chepai_number);
-        chejia_number = (EditText)fragmentRootView. findViewById(R.id.chejia_number);
-        engine_number = (EditText)fragmentRootView. findViewById(R.id.engine_number);
+        query_city = (RelativeLayout) fragmentRootView.findViewById(R.id.cx_city);
+        chepai_number = (EditText) fragmentRootView.findViewById(R.id.chepai_number);
+        chejia_number = (EditText) fragmentRootView.findViewById(R.id.chejia_number);
+        engine_number = (EditText) fragmentRootView.findViewById(R.id.engine_number);
         short_name = (TextView) fragmentRootView.findViewById(R.id.chepai_sz);
-short_name.setText(defaultChepai);
+        tv_cx=(TextView)fragmentRootView.findViewById(R.id.tv_cx);
+        short_name.setText(defaultChepai);
         // ----------------------------------------------
 
-        btn_cpsz = (View)fragmentRootView. findViewById(R.id.btn_cpsz);
-        btn_query = (Button)fragmentRootView. findViewById(R.id.btn_query);
-
+        // btn_cpsz = (RelativeLayout) fragmentRootView.findViewById(R.id.btn_cpsz);
+        btn_query = (Button) fragmentRootView.findViewById(R.id.btn_query);
+        btn_cpsz = (RelativeLayout) fragmentRootView.findViewById(R.id.btn_cpsz);
 
         btn_cpsz.setOnClickListener(this);
         query_city.setOnClickListener(this);
@@ -106,7 +108,7 @@ short_name.setText(defaultChepai);
 
         // 显示隐藏行驶证图示
 
-        popXSZ = (View)fragmentRootView. findViewById(R.id.popXSZ);
+        popXSZ = (View) fragmentRootView.findViewById(R.id.popXSZ);
         popXSZ.setOnTouchListener(new popOnTouchListener());
         hideShowXSZ();
     }
@@ -116,14 +118,18 @@ short_name.setText(defaultChepai);
     {
         switch (v.getId()) {
             case R.id.btn_cpsz://车牌号码查询
+                Log.e("点击了车牌号烦人布局", ""+R.id.btn_cpsz);
                 Intent intent = new Intent();
                 intent.setClass(getActivity(), ShortNameList.class);
                 intent.putExtra("select_short_name", short_name.getText());
                 startActivityForResult(intent, 0);
-            case R.id.query_city://查询地选择
+                break;
+            case R.id.cx_city://查询地选择
+                Log.e("点击了查询地点的布局", ""+R.id.cx_city);
                 Intent Intent_q = new Intent();
                 Intent_q.setClass(getActivity(), ProvinceList.class);
                 startActivityForResult(Intent_q, 1);
+                break;
             case R.id.btn_query:
                 // 获取违章信息
                 CarInfo car = new CarInfo();
@@ -134,15 +140,15 @@ short_name.setText(defaultChepai);
                         .trim();
                 final String chepaiNumberStr = chepai_number.getText()
                         .toString().trim();
-                if (query_city.getText() != null
-                        && !query_city.getText().equals("")) {
-                    quertCityStr = query_city.getText().toString().trim();
+                if (tv_cx.getText() != null
+                        && !tv_cx.getText().equals("")) {
+                    quertCityStr = tv_cx.getText().toString().trim();
 
                 }
 
-                if (query_city.getTag() != null
-                        && !query_city.getTag().equals("")) {
-                    quertCityIdStr = query_city.getTag().toString().trim();
+                if (tv_cx.getTag() != null
+                        && !tv_cx.getTag().equals("")) {
+                    quertCityIdStr = tv_cx.getTag().toString().trim();
                     car.setCity_id(Integer.parseInt(quertCityIdStr));
                 }
                 final String chejiaNumberStr = chejia_number.getText()
@@ -174,10 +180,11 @@ short_name.setText(defaultChepai);
 
     // 根据默认查询地城市id, 初始化查询项目
     // setQueryItem(defaultCityId, defaultCityName);
-  //  short_name.setText(defaultChepai);
+    //  short_name.setText(defaultChepai);
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
         if (data == null)
             return;
 
@@ -203,7 +210,8 @@ short_name.setText(defaultChepai);
     }
 
     // 根据城市的配置设置查询项目
-    private void setQueryItem(int cityId) {
+    private void setQueryItem(int cityId)
+    {
 
         InputConfigJson cityConfig = WeizhangClient.getInputConfig(cityId);
 
@@ -211,14 +219,14 @@ short_name.setText(defaultChepai);
         if (cityConfig != null) {
             CityInfoJson city = WeizhangClient.getCity(cityId);
 
-            query_city.setText(city.getCity_name());
-            query_city.setTag(cityId);
+            tv_cx.setText(city.getCity_name());
+            tv_cx.setTag(cityId);
 
             int len_chejia = cityConfig.getClassno();
             int len_engine = cityConfig.getEngineno();
 
-            View row_chejia = (View)fragmentView. findViewById(R.id.row_chejia);
-            View row_engine = (View)fragmentView. findViewById(R.id.row_engine);
+            View row_chejia = (View) fragmentView.findViewById(R.id.row_chejia);
+            View row_engine = (View) fragmentView.findViewById(R.id.row_engine);
 
             // 车架号
             if (len_chejia == 0) {
@@ -249,14 +257,15 @@ short_name.setText(defaultChepai);
     }
 
     // 提交表单检测
-    private boolean checkQueryItem(CarInfo car) {
+    private boolean checkQueryItem(CarInfo car)
+    {
         if (car.getCity_id() == 0) {
-            Toast.makeText(getActivity(), "请选择查询地", 0).show();
+            Toast.makeText(getActivity(), "请选择查询地", Toast.LENGTH_LONG).show();
             return false;
         }
 
         if (car.getChepai_no().length() != 7) {
-            Toast.makeText(getActivity(), "您输入的车牌号有误", 0).show();
+            Toast.makeText(getActivity(), "您输入的车牌号有误", Toast.LENGTH_LONG).show();
             return false;
         }
 
@@ -270,18 +279,18 @@ short_name.setText(defaultChepai);
             // 车架号
             if (classno > 0) {
                 if (car.getChejia_no().equals("")) {
-                    Toast.makeText(getActivity(), "输入车架号不为空", 0).show();
+                    Toast.makeText(getActivity(), "输入车架号不为空", Toast.LENGTH_LONG).show();
                     return false;
                 }
 
                 if (car.getChejia_no().length() != classno) {
                     Toast.makeText(getActivity(), "输入车架号后" + classno + "位",
-                            0).show();
+                            Toast.LENGTH_LONG).show();
                     return false;
                 }
             } else if (classno < 0) {
                 if (car.getChejia_no().length() == 0) {
-                    Toast.makeText(getActivity(), "输入全部车架号", 0).show();
+                    Toast.makeText(getActivity(), "输入全部车架号", Toast.LENGTH_LONG).show();
                     return false;
                 }
             }
@@ -289,18 +298,18 @@ short_name.setText(defaultChepai);
             //发动机
             if (engineno > 0) {
                 if (car.getEngine_no().equals("")) {
-                    Toast.makeText(getActivity(), "输入发动机号不为空", 0).show();
+                    Toast.makeText(getActivity(), "输入发动机号不为空", Toast.LENGTH_LONG).show();
                     return false;
                 }
 
                 if (car.getEngine_no().length() != engineno) {
                     Toast.makeText(getActivity(),
-                            "输入发动机号后" + engineno + "位", 0).show();
+                            "输入发动机号后" + engineno + "位", Toast.LENGTH_LONG).show();
                     return false;
                 }
             } else if (engineno < 0) {
                 if (car.getEngine_no().length() == 0) {
-                    Toast.makeText(getActivity(), "输入全部发动机号", 0).show();
+                    Toast.makeText(getActivity(), "输入全部发动机号", Toast.LENGTH_LONG).show();
                     return false;
                 }
             }
@@ -308,18 +317,18 @@ short_name.setText(defaultChepai);
             // 注册证书编号
             if (registno > 0) {
                 if (car.getRegister_no().equals("")) {
-                    Toast.makeText(getActivity(), "输入证书编号不为空", 0).show();
+                    Toast.makeText(getActivity(), "输入证书编号不为空", Toast.LENGTH_LONG).show();
                     return false;
                 }
 
                 if (car.getRegister_no().length() != registno) {
                     Toast.makeText(getActivity(),
-                            "输入证书编号后" + registno + "位", 0).show();
+                            "输入证书编号后" + registno + "位", Toast.LENGTH_LONG).show();
                     return false;
                 }
             } else if (registno < 0) {
                 if (car.getRegister_no().length() == 0) {
-                    Toast.makeText(getActivity(), "输入全部证书编号", 0).show();
+                    Toast.makeText(getActivity(), "输入全部证书编号", Toast.LENGTH_LONG).show();
                     return false;
                 }
             }
@@ -330,57 +339,67 @@ short_name.setText(defaultChepai);
     }
 
     // 设置/取消最大长度限制
-    private void setMaxlength(EditText et, int maxLength) {
+    private void setMaxlength(EditText et, int maxLength)
+    {
         if (maxLength > 0) {
-            et.setFilters(new InputFilter[] { new InputFilter.LengthFilter(
-                    maxLength) });
+            et.setFilters(new InputFilter[]{new InputFilter.LengthFilter(
+                    maxLength)});
         } else { // 不限制
-            et.setFilters(new InputFilter[] {});
+            et.setFilters(new InputFilter[]{});
         }
     }
 
     // 显示隐藏行驶证图示
-    private void hideShowXSZ() {
+    private void hideShowXSZ()
+    {
 
-        View btn_help1 = (View)fragmentView.findViewById(R.id.ico_chejia);
-        if (btn_help1==null){
-            Log.e("btn_help1kongde","+++++++");
+        View btn_help1 = (View) fragmentView.findViewById(R.id.ico_chejia);
+        if (btn_help1 == null) {
+            Log.e("btn_help1kongde", "+++++++");
         }
-        View btn_help2 = (View)fragmentView.findViewById(R.id.ico_engine);
-        if (btn_help2==null){
-            Log.e("btn_help2kongde","+++++++");
+        View btn_help2 = (View) fragmentView.findViewById(R.id.ico_engine);
+        if (btn_help2 == null) {
+            Log.e("btn_help2kongde", "+++++++");
         }
-       // Button btn_closeXSZ = (Button)findViewById(R.id.btn_closeXSZ);
-        Button btn=(Button)fragmentView.findViewById(R.id.btn_closeXSZ);
-        if (btn==null){
-            Log.e("btn","+++++++");
+        // Button btn_closeXSZ = (Button)findViewById(R.id.btn_closeXSZ);
+        Button btn = (Button) fragmentView.findViewById(R.id.btn_closeXSZ);
+        if (btn == null) {
+            Log.e("btn", "+++++++");
         }
 
 
-        btn_help1.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
+        btn_help1.setOnClickListener(new OnClickListener()
+        {
+            public void onClick(View v)
+            {
                 popXSZ.setVisibility(View.VISIBLE);
             }
         });
-        btn_help2.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
+        btn_help2.setOnClickListener(new OnClickListener()
+        {
+            public void onClick(View v)
+            {
                 popXSZ.setVisibility(View.VISIBLE);
             }
         });
-        btn.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
+        btn.setOnClickListener(new OnClickListener()
+        {
+            public void onClick(View v)
+            {
                 popXSZ.setVisibility(View.GONE);
             }
         });
     }
 
-// 避免穿透导致表单元素取得焦点
-private class popOnTouchListener implements OnTouchListener {
-    @Override
-    public boolean onTouch(View arg0, MotionEvent arg1) {
-        popXSZ.setVisibility(View.GONE);
-        return true;
+    // 避免穿透导致表单元素取得焦点
+    private class popOnTouchListener implements OnTouchListener
+    {
+        @Override
+        public boolean onTouch(View arg0, MotionEvent arg1)
+        {
+            popXSZ.setVisibility(View.GONE);
+            return true;
+        }
     }
-}
 
 }  

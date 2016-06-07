@@ -56,6 +56,11 @@
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
 
+    <!--时间选择器部分-->
+    <item name="gray_holo_dark" type="color">#ff464646</item>
+    <item name="gray_holo_light" type="color">#ffd0d0d0</item>
+    <!--数字选择器部分-->
+    <color name="gray_bg_ffb2b2b2">#ffffff</color>
 
 
 </resources>
