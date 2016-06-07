@@ -85,7 +85,7 @@
                 android:paddingRight="8dip"
                 android:visibility="gone" />
 
-            <com.markupartist.android.widget.ScrollingTextView
+            <com.cyan.ui.ScrollingTextView
                 android:id="@+id/actionbar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

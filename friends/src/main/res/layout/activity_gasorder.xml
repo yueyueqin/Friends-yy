@@ -4,7 +4,7 @@
               android:layout_height="match_parent"
               android:orientation="vertical" >
 
-    <include layout="@layout/title_gas" />
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -33,6 +33,19 @@
             android:layout_alignParentRight="true"
             android:layout_margin="8dp"
             android:src="@drawable/list" />
+
+        <TextView
+            android:id="@+id/tv_title_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="8dp"
+            android:background="@drawable/list"
+            android:text="范围"
+            android:textColor="#FFFFFF"/>
+
+
 
         <LinearLayout
             android:id="@+id/ll_summary"

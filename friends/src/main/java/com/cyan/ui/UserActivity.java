@@ -6,12 +6,13 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.ToggleButton;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.cyan.annotation.ActivityFragmentInject;
@@ -29,6 +30,7 @@ import com.cyan.util.BitmapUtil;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 
 /**
@@ -50,7 +52,7 @@ public class UserActivity extends BaseActivity implements SendUserView,SendFileV
     @InjectView(R.id.user_icon_image)
     ImageView userIconImage;
     @InjectView(R.id.sex_choice_switch)
-    ToggleButton sexChoiceSwitch;
+    CheckBox sexChoiceSwitch;
     @InjectView(R.id.user_icon)
     RelativeLayout userIcon;
     @InjectView(R.id.user_nick_text)
@@ -61,6 +63,9 @@ public class UserActivity extends BaseActivity implements SendUserView,SendFileV
     RelativeLayout sexChoice;
     @InjectView(R.id.user_sign_text)
     EditText userSignText;
+    @InjectView(R.id.user_car)
+    RelativeLayout user_car;
+
     private UserPresenter userPresenter;
     private FilePresenter filePresenter;
     @Override
@@ -190,9 +195,37 @@ public class UserActivity extends BaseActivity implements SendUserView,SendFileV
                     user.setSex("女");
             }
         });
+        user_car.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                if (isLogined()) {
+                    Intent intent = new Intent();
+                    intent.setClass(UserActivity.this, CarInfoActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(UserActivity.this, "请先登录", Toast.LENGTH_SHORT)
+                            .show();
+                }
+            }
+        });
+
+
 
     }
-
+    /**
+     * 判断用户是否登录
+     *
+     * @return
+     */
+    private boolean isLogined() {
+        BmobUser user = BmobUser.getCurrentUser(UserActivity.this, User.class);
+        if (user != null) {
+            return true;
+        }
+        return false;
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

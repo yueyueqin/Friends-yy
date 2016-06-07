@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@android:color/white" >
+                android:background="?attr/colorPrimary" >
 
     <ImageView
         android:id="@+id/iv_back"
@@ -20,7 +20,7 @@
         android:layout_height="fill_parent"
         android:layout_centerInParent="true"
         android:gravity="center"
-        android:text="预约加油跳转"
+        android:text="加油站详情"
         android:textColor="@android:color/black"
         android:textSize="20sp" />
 

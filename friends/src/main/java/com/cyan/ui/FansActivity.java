@@ -30,7 +30,7 @@ import cn.bmob.v3.datatype.BmobPointer;
  * Created by Administrator on 2016/2/2.
  */
 @ActivityFragmentInject(
-        contentViewId = R.layout.activity_list,
+        contentViewId = R.layout.activity_userinfo,
         toolbarTitle = R.string.fans
 )
 public class FansActivity extends BaseActivity implements RecyclerArrayAdapter.OnLoadMoreListener ,FocusView{

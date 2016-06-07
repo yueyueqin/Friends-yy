@@ -4,12 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,23 +21,26 @@ import com.cyan.scanpay.PayOrder;
 import cn.bmob.v3.BmobUser;
 
 /**
- * @author YueYue
+ * User: 杨月(1298375722@qq.com)
+ * Date: 2016-06-08
+ * Time: 04:40
+ * 类说明：
  */
-public class Information_detail extends Activity
+public class Result extends Activity
 {
-    private TextView orderd_data, orderd_gas, orderd_model, orderd_volume,
-            orderd_total, orderd_name, user_pay, user_logout01, tv_order, tv_title_button;
+    private TextView tv_name, tv_money, tv_number, tv_type, tv_station, tv_data,btn_pay;
+
+
     PayOrder order;
     PopupWindow choseDialog;
     BmobPay bmobPay;
     Bitmap whole;
     public static final String APPID = "9c3147854c788ad6895cbdff4f386770";
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.information_details);
+        setContentView(R.layout.result_scanpay);
 
         BmobPay.init(this.getApplicationContext(), APPID);
         bmobPay = new BmobPay(this);
@@ -48,72 +48,42 @@ public class Information_detail extends Activity
         if (BmobUser.getCurrentUser(this) != null) {
             order.setUsername(BmobUser.getCurrentUser(this).getUsername());
         }
-
-        orderd_data = (TextView) findViewById(R.id.orderd_data);
-        orderd_gas = (TextView) findViewById(R.id.orderd_gas);
-        orderd_model = (TextView) findViewById(R.id.orderd_model);
-        orderd_volume = (TextView) findViewById(R.id.orderd_volume);
-        orderd_total = (TextView) findViewById(R.id.orderd_total);
-        orderd_name = (TextView) findViewById(R.id.orderd_name);
-        user_pay = (TextView) findViewById(R.id.user_pay);
-        user_logout01 = (TextView) findViewById(R.id.user_logout01);
-
-
-        Bundle bundle = getIntent().getExtras();
-        orderd_data.setText(bundle.getString("data"));
-        orderd_gas.setText(bundle.getString("gasstation"));
-        orderd_model.setText(bundle.getString("model"));
-        orderd_volume.setText(bundle.getString("volume"));
-        orderd_total.setText(bundle.getString("total"));
-
-        order.setPrice(Double.parseDouble(orderd_total.getText().toString()));
-        orderd_name.setText(bundle.getString("name"));
-        user_pay.setOnClickListener(new OnClickListener()
+        tv_data = (TextView) findViewById(R.id.tv_data);
+        tv_name = (TextView) findViewById(R.id.tv_name);
+        tv_money = (TextView) findViewById(R.id.tv_money);
+        tv_number = (TextView) findViewById(R.id.tv_number);
+        tv_type = (TextView) findViewById(R.id.tv_type);
+        tv_station = (TextView) findViewById(R.id.tv_station);
+        btn_pay=(TextView) findViewById(R.id.btn_pay);
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("name");
+        String data = intent.getStringExtra("data");
+        String type = intent.getStringExtra("type");
+        String number = intent.getStringExtra("number");
+        String money = intent.getStringExtra("money");
+        String station = intent.getStringExtra("station");
+        tv_station.setText(station);
+        tv_type.setText(type);
+        tv_number.setText(number);
+        tv_money.setText(money);
+        tv_name.setText(name);
+        tv_data.setText(data);
+        btn_pay.setOnClickListener(new View.OnClickListener()
         {
-
             @Override
             public void onClick(View v)
             {
                 choseType();
             }
         });
-        user_logout01.setOnClickListener(new OnClickListener()
-        {
-
-            @Override
-            public void onClick(View view)
-            {
-                Intent intent = new Intent(Information_detail.this, Qr_codeActivity.class);
-
-                String name = orderd_name.getText().toString().trim();
-                String station_name = orderd_gas.getText().toString().trim();
-                String volume = orderd_volume.getText().toString().trim();
-                String data = orderd_data.getText().toString().trim();
-                String model = orderd_model.getText().toString().trim();
-                String total = orderd_total.getText().toString().trim();
-                String contents = "BEGIN:VCARD\nVERSION:3.0\n" + "N:" + name
-                        + "\nNOTE:" + data+"\nORG:" + station_name +
-                         "\nTEL:" + model + "\nTITLE:" + volume+"\nADR:" + total
-                        + "\nURL:";
-                Log.e("contents的内容是？？",""+contents);
-                intent.putExtra("contents", contents);
-
-
-                startActivity(intent);
-
-            }
-
-        });
     }
-
-
     void choseType()
     {
         if (choseDialog == null) {
             View typeDialog = getLayoutInflater().inflate(
                     R.layout.dialog_paytype, null);
             typeDialog.findViewById(R.id.alipay).setOnClickListener(
-                    new OnClickListener()
+                    new View.OnClickListener()
                     {
                         @Override
                         public void onClick(View v)
@@ -124,7 +94,7 @@ public class Information_detail extends Activity
                         }
                     });
             typeDialog.findViewById(R.id.wxpay).setOnClickListener(
-                    new OnClickListener()
+                    new View.OnClickListener()
                     {
                         @Override
                         public void onClick(View v)
@@ -135,10 +105,10 @@ public class Information_detail extends Activity
                         }
                     });
             choseDialog = new PopupWindow(typeDialog,
-                    LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+                    ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         }
         Toast.makeText(this, "请选择支付方式", Toast.LENGTH_SHORT).show();
-        choseDialog.showAtLocation((View) user_pay.getParent(),
+        choseDialog.showAtLocation((View) btn_pay.getParent(),
                 Gravity.CENTER, 0, 0);
     }
 
@@ -153,7 +123,7 @@ public class Information_detail extends Activity
         Toast.makeText(this, "正在申请支付。。请稍候。。", Toast.LENGTH_SHORT).show();
 
         order.setPaid(true);
-        order.save(Information_detail.this);
+        order.save(Result.this);
 
         PayListener listener = new PayListener()
         {
@@ -161,14 +131,14 @@ public class Information_detail extends Activity
             @Override
             public void unknow()
             {
-                Toast.makeText(Information_detail.this, "支付失败，很抱歉你只能看这么一点了",
+                Toast.makeText(Result.this, "支付失败，很抱歉你只能看这么一点了",
                         Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void succeed()
             {
-                Toast.makeText(Information_detail.this,
+                Toast.makeText(Result.this,
                         "支付操作完成!请等待服务器校验通过即可满足您的要求!", Toast.LENGTH_SHORT)
                         .show();
 
@@ -178,18 +148,18 @@ public class Information_detail extends Activity
             public void orderId(String arg0)
             {
                 order.setOrderId(arg0);
-                order.update(Information_detail.this);
+                order.update(Result.this);
             }
 
             @Override
             public void fail(int arg0, String arg1)
             {
-                Toast.makeText(Information_detail.this, "支付失败，很抱歉你只能看这么一点了",
+                Toast.makeText(Result.this, "支付失败，很抱歉你只能看这么一点了",
                         Toast.LENGTH_SHORT).show();
                 if (!byAli && arg0 == -3) {
-                    Toast.makeText(Information_detail.this, "您尚未安裝微信支付插件", Toast.LENGTH_LONG)
+                    Toast.makeText(Result.this, "您尚未安裝微信支付插件", Toast.LENGTH_LONG)
                             .show();
-                    InstallPlugin.installBmobPayPlugin(Information_detail.this,
+                    InstallPlugin.installBmobPayPlugin(Result.this,
                             InstallPlugin.ASSETS_PLUGIN);
                 }
             }
@@ -214,12 +184,12 @@ public class Information_detail extends Activity
             public void succeed(String arg0)
             {
                 if (arg0.equals("NOTPAY")) {
-                    Toast.makeText(Information_detail.this, "支付失败，很抱歉你只能看这么一点了",
+                    Toast.makeText(Result.this, "支付失败，很抱歉你只能看这么一点了",
                             Toast.LENGTH_SHORT).show();
                 } else {
                     order.setPaid(true);
-                    order.update(Information_detail.this);
-                    Toast.makeText(Information_detail.this,
+                    order.update(Result.this);
+                    Toast.makeText(Result.this,
                             "感谢你购买" + "!", Toast.LENGTH_SHORT)
                             .show();
 
@@ -230,11 +200,9 @@ public class Information_detail extends Activity
             @Override
             public void fail(int arg0, String arg1)
             {
-                Toast.makeText(Information_detail.this, "查询失败，很抱歉你只能看这么一点了",
+                Toast.makeText(Result.this, "查询失败，很抱歉你只能看这么一点了",
                         Toast.LENGTH_SHORT).show();
             }
         });
     }
-
-
 }

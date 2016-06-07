@@ -1,56 +1,47 @@
-<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ffffff" >
-
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp" >
+        android:padding="16dp">
 
         <RelativeLayout
-            android:id="@+id/user_icon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/selector_settings_item_down"
             android:paddingBottom="8dp"
-            android:paddingTop="8dp" >
+            android:paddingTop="8dp">
 
             <TextView
                 style="@style/TextTheme.tipstheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="姓名：" />
-            <TextView
-            android:id="@+id/order_name"
-            style="@style/TextTheme.tipstheme_second"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="100dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:paddingBottom="8dip"
-            android:paddingTop="8dip"
-            android:hint="请输入姓名"
-             />
+                android:text="姓名："/>
 
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/TextTheme.tipstheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="您的姓名"/>
 
         </RelativeLayout>
 
-       
+
         <RelativeLayout
-            android:id="@+id/user_nick"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/selector_settings_item_down"
             android:paddingBottom="8dp"
-            android:paddingTop="8dp" >
+            android:paddingTop="8dp">
 
             <TextView
                 style="@style/TextTheme.tipstheme"
@@ -59,26 +50,25 @@
                 android:layout_centerVertical="true"
                 android:paddingBottom="8dip"
                 android:paddingTop="8dip"
-                android:text="时间：" />
+                android:text="时间："/>
+
             <TextView
-                android:id="@+id/order_timepicker"
-                android:layout_alignParentRight="true"
+                android:id="@+id/tv_data"
                 style="@style/TextTheme.tipstheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:text="请选择日期" 
-                />
+                android:text="订单日期"/>
 
         </RelativeLayout>
 
-       
+
         <RelativeLayout
-            android:id="@+id/sex_choice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="8dp"
-            android:paddingTop="8dp" >
+            android:paddingTop="8dp">
 
             <TextView
                 android:id="@+id/order_jiayouzhan"
@@ -88,30 +78,25 @@
                 android:layout_centerVertical="true"
                 android:paddingBottom="8dip"
                 android:paddingTop="8dip"
-                android:text="加油站：" />
+                android:text="加油站："/>
+
             <TextView
-                android:id="@+id/station_name"
+                android:id="@+id/tv_station"
+                style="@style/TextTheme.tipstheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_alignTop="@id/user_sign_tips"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="100dp"
-                android:ellipsize="end"
-                android:gravity="right"
-                android:paddingBottom="8dip"
-                android:paddingTop="8dip"></TextView>
-
+                android:text="选择的加油站"/>
         </RelativeLayout>
 
-       
+
         <RelativeLayout
-            android:id="@+id/user_sign"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/selector_settings_item_down"
             android:paddingBottom="8dp"
-            android:paddingTop="8dp" >
+            android:paddingTop="8dp">
 
             <TextView
                 style="@style/TextTheme.tipstheme"
@@ -120,32 +105,24 @@
                 android:layout_centerVertical="true"
                 android:paddingBottom="8dip"
                 android:paddingTop="8dip"
-                android:text="加油型号：" />
-            <Spinner
-            android:id="@+id/order_model"
-            android:gravity="right"
-            style="@style/TextTheme.tipstheme_second"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@id/user_sign_tips"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="100dp"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:paddingBottom="8dip"
-            android:paddingTop="8dip"
-             />
+                android:text="加油型号："/>
+
+            <TextView
+                android:id="@+id/tv_type"
+                style="@style/TextTheme.tipstheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="加油型号"/>
 
         </RelativeLayout>
 
-
         <RelativeLayout
-            android:id="@+id/settings_push"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="8dp"
-            android:paddingTop="8dp" >
+            android:paddingTop="8dp">
 
             <TextView
                 style="@style/TextTheme.tipstheme"
@@ -154,31 +131,24 @@
                 android:layout_centerVertical="true"
                 android:paddingBottom="8dip"
                 android:paddingTop="8dip"
-                android:text="加油量：" />
+                android:text="加油量："/>
+
             <TextView
-            android:id="@+id/order_jiayouliang"
-            style="@style/TextTheme.tipstheme_second"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="100dp"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:paddingBottom="8dip"
-            android:paddingTop="8dip"
-            android:hint="加油量"
-             />
+                android:id="@+id/tv_number"
+                style="@style/TextTheme.tipstheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="加油量"/>
         </RelativeLayout>
 
-
         <RelativeLayout
-            android:id="@+id/settings_cache"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/selector_settings_item_down"
             android:paddingBottom="8dp"
-            android:paddingTop="8dp" >
+            android:paddingTop="8dp">
 
             <TextView
                 android:id="@+id/settings_cache_tips"
@@ -188,31 +158,39 @@
                 android:layout_centerVertical="true"
                 android:paddingBottom="8dp"
                 android:paddingTop="8dp"
-                android:text="总计：" />
+                android:text="总计："/>
+
             <TextView
-                android:id="@+id/order_total"
-                android:layout_alignParentRight="true"
+                android:id="@+id/tv_money"
                 style="@style/TextTheme.tipstheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:hint="总计" 
+                android:hint="总计"
                 />
         </RelativeLayout>
 
-
-        <TextView
-            android:clickable="true"
-            android:id="@+id/order_corrent"
-            style="@style/TextTheme.tipstheme_buttontext"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_marginTop="48dp"
-            android:background="@drawable/selector_logout"
-            android:gravity="center"
-            android:paddingBottom="12dip"
-            android:paddingTop="12dip"
-            android:text="确定" />
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/btn_pay"
+                style="@style/TextTheme.tipstheme_buttontext"
+                android:layout_width="88dp"
+                android:layout_height="44dp"
+                android:layout_centerHorizontal="true"
+
+                android:background="@drawable/selector_logout"
+                android:gravity="center"
+                android:paddingBottom="12dip"
+                android:paddingTop="12dip"
+                android:text="支   付"/>
+
+
+        </RelativeLayout>
+
     </LinearLayout>
 
 </ScrollView>

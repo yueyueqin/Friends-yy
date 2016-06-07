@@ -285,10 +285,10 @@ public class MainActivity extends RefreshActivity implements RefreshLayout.OnRef
                             intent = new Intent(MainActivity.this, SettingsActivity.class);
                             startActivityForResult(intent, 0);
                             break;
-                        case R.id.nav_about:
+                       /* case R.id.nav_about:
                             intent = new Intent(MainActivity.this, AboutActivity.class);
                             startActivity(intent);
-                            break;
+                            break;*/
                         case R.id.nav_violation:
                             intent = new Intent(MainActivity.this, ViolationActivity.class);
                             startActivityForResult(intent, 0);

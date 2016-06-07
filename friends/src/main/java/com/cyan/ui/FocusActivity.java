@@ -3,7 +3,6 @@ package com.cyan.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
@@ -34,8 +33,8 @@ import cn.bmob.v3.datatype.BmobPointer;
         toolbarTitle = R.string.focuses
 )
 public class FocusActivity extends BaseActivity implements RecyclerArrayAdapter.OnLoadMoreListener,FocusView{
-    @InjectView(R.id.toolbar)
-    Toolbar toolbar;
+   /* @InjectView(R.id.toolbar)
+    Toolbar toolbar;*/
     @InjectView(R.id.list)
     EasyRecyclerView focusList;
     private User user;

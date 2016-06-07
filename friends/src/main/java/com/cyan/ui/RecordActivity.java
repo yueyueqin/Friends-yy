@@ -24,7 +24,7 @@ import de.greenrobot.daoexample.RecordDao;
  * Created by Administrator on 2016/2/15.
  */
 @ActivityFragmentInject(
-        contentViewId = R.layout.activity_list,
+        contentViewId = R.layout.activity_userinfo,
         toolbarTitle = R.string.record
 )
 public class RecordActivity extends BaseActivity {

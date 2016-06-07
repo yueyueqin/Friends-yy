@@ -9,16 +9,16 @@ import android.util.SparseArray;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.cyan.app.MyApplication;
 import com.cyan.adapter.PostAdapter;
 import com.cyan.annotation.ActivityFragmentInject;
-import com.cyan.community.R;
+import com.cyan.app.MyApplication;
 import com.cyan.bean.Post;
 import com.cyan.bean.User;
+import com.cyan.community.R;
 import com.cyan.listener.OnItemClickListener;
-import com.cyan.widget.refreshlayout.RefreshLayout;
 import com.cyan.util.SimpleHandler;
 import com.cyan.widget.recyclerview.EasyRecyclerView;
+import com.cyan.widget.refreshlayout.RefreshLayout;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,7 +33,7 @@ import cn.bmob.v3.listener.FindListener;
  * Created by Administrator on 2016/2/2.
  */
 @ActivityFragmentInject(
-        contentViewId = R.layout.activity_list,
+        contentViewId = R.layout.activity_userinfo,
         toolbarTitle = R.string.dynamic
 )
 public class PostListActivity extends RefreshActivity implements RefreshLayout.OnRefreshListener {
@@ -52,12 +52,12 @@ public class PostListActivity extends RefreshActivity implements RefreshLayout.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list);
+        setContentView(R.layout.activity_userinfo);
         ButterKnife.inject(this);
 
-        setSupportActionBar(toolbar);
+       setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("动态");
+      getSupportActionBar().setTitle("动态");
         postList.setRefreshListener(this);
         postList.setLayoutManager(new LinearLayoutManager(this));
         postList.showProgress();

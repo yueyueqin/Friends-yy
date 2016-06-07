@@ -139,19 +139,6 @@ public class GasorderFragment extends PreferenceFragment implements View.OnClick
         option.setIsNeedAddress(true);// 设置是否需要地址信息，默认为无地址
         option.setNeedDeviceDirect(true);// 在网络定位时，是否需要设备方向
         mLocationClient.setLocOption(option);
-
-
-
-      /*  bt_3km.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-
-                    distanceSearch("3km >", 3000);
-
-            }
-        });*/
     }
 
     public void setMarker(ArrayList<Station> list)
@@ -272,31 +259,6 @@ public class GasorderFragment extends PreferenceFragment implements View.OnClick
         }
 
     }
-
-    /**
-     * dialog点击事件
-     *
-     * @param v 点击的view
-     */
-   /* public void onDialogClick(View v)
-    {
-        switch (v.getId()) {
-            case R.id.bt_3km:
-                distanceSearch("3km >", 3000);
-                break;
-            case R.id.bt_5km:
-                distanceSearch("5km >", 5000);
-                break;
-            case R.id.bt_8km:
-                distanceSearch("8km >", 8000);
-                break;
-            case R.id.bt_10km:
-                distanceSearch("10km >", 10000);
-                break;
-            default:
-                break;
-        }
-    }*/
 
     /**
      * 根据distance,获取当前位置附近的加油站

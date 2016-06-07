@@ -37,7 +37,7 @@ public class Information_fill extends FragmentActivity implements OnClickListene
 	private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	private TextView order_timepicker,order_jiayouliang;
 
-	private TextView order_total, order_corrent;
+	private TextView order_total, order_corrent,tv_order,tv_title_button;
 	private TextView station_name,order_name;
 	private String gasname;
 	private ArrayList<Petrol> gasprice;
@@ -61,10 +61,11 @@ public class Information_fill extends FragmentActivity implements OnClickListene
 		order_timepicker = (TextView) findViewById(R.id.order_timepicker);
 		order_timepicker.setOnClickListener(this);
 		station_name=(TextView)findViewById(R.id.station_name);
-		order_name = (TextView) findViewById(R.id.order_name);
-
 		myUser = MyApplication.getInstance().getCurrentUser();
+		order_name = (TextView) findViewById(R.id.order_name);
 		order_name.setText(myUser.getUsername());
+
+
 
 		order_model = (Spinner) findViewById(R.id.order_model);
 		order_jiayouliang = (TextView) findViewById(R.id.order_jiayouliang);
@@ -178,10 +179,6 @@ public class Information_fill extends FragmentActivity implements OnClickListene
 				break;
 			case  R.id.order_jiayouliang:
 				initAlertDialog();
-
-
-
-
 				break;
 		case R.id.order_corrent:
 
@@ -195,9 +192,7 @@ public class Information_fill extends FragmentActivity implements OnClickListene
 			Toast.makeText(Information_fill.this, "请完善信息", Toast.LENGTH_SHORT).show();
 
 		}
-
 			else {
-
 			Intent order_correntintent = new Intent(Information_fill.this,
 					Information_detail.class);
 			Bundle bundle = new Bundle();

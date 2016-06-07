@@ -244,9 +244,11 @@
             android:name="com.cyan.ui.CarInfoActivity"
             android:theme="@android:style/Theme.Translucent" />
 
+        <!--扫描二维码结果Activity声明-->
 
-
-
+        <activity
+            android:name="com.cyan.gas.Result"
+            android:theme="@style/BaseAppTheme.AppTheme" />
 
 
 

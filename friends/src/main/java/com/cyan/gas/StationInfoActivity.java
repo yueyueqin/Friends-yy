@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ScrollView;
@@ -18,7 +19,7 @@ public class StationInfoActivity extends Activity implements OnClickListener {
 	private Context mContext;
 	private TextView tv_title_right, tv_name, tv_distance, tv_area, tv_addr,tv_order;
 	private ImageView iv_back;
-
+private Button bt_tv_nav,bt_tv_order;
 	private ScrollView sv;
 	private ListView lv_gast_price, lv_price;
 	private Station s;
@@ -42,10 +43,13 @@ public class StationInfoActivity extends Activity implements OnClickListener {
 		iv_back.setOnClickListener(this);
 		tv_order=(TextView)findViewById(R.id.tv_order);
 		tv_order.setOnClickListener(this);
-		tv_title_right = (TextView) findViewById(R.id.tv_title_button);
-		tv_title_right.setText("导航 >");
-		tv_title_right.setOnClickListener(this);
-		tv_title_right.setVisibility(View.VISIBLE);
+		bt_tv_order=(Button)findViewById(R.id.bt_tv_order);
+		bt_tv_order.setOnClickListener(this);
+		bt_tv_nav = (Button) findViewById(R.id.bt_tv_nav);
+		bt_tv_nav.setText("导航 ");
+		bt_tv_nav.setOnClickListener(this);
+		tv_title_right=(TextView)findViewById(R.id.tv_title_button);
+		tv_title_right.setVisibility(View.INVISIBLE);
 		iv_back = (ImageView) findViewById(R.id.iv_back);
 		iv_back.setVisibility(View.VISIBLE);
 		iv_back.setOnClickListener(this);
@@ -78,7 +82,7 @@ public class StationInfoActivity extends Activity implements OnClickListener {
 		case R.id.iv_back:
 			finish();
 			break;
-		case R.id.tv_title_button:
+		case R.id.bt_tv_nav:
 			Intent intent = new Intent(mContext,RouteActivity.class);
 			intent.putExtra("lat", s.getLat());
 			intent.putExtra("lon", s.getLon());
@@ -86,7 +90,7 @@ public class StationInfoActivity extends Activity implements OnClickListener {
 			intent.putExtra("locLon", getIntent().getDoubleExtra("locLon", 0));
 			startActivity(intent);
 			break;
-			case  R.id.tv_order:
+			case  R.id.bt_tv_order:
 				Intent intent1=new Intent(mContext,Information_fill.class);
 				Bundle bundle=new Bundle();
 				bundle.putString("Name", s.getName());

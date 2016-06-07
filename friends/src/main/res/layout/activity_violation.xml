@@ -5,12 +5,12 @@
                 android:layout_height="match_parent"
                 android:background="@color/csy_bg_body">
 
-    <include android:id="@+id/titbar" layout="@layout/csy_titlebar" />
+
 
     <!-- 查询表单 -->
     <LinearLayout
         android:id="@+id/cx_form"
-        android:layout_below="@id/titbar"
+
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/csy_form"
