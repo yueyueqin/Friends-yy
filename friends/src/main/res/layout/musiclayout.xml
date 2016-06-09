@@ -2,47 +2,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/blurbg"
+
     >
+    <LinearLayout
+        android:layout_width="0px"
+        android:layout_height="0px"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
 
     <AutoCompleteTextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:id="@+id/edittext"
         android:singleLine="true"
+        android:textColor="@color/color_red"
         android:completionThreshold="1"
         android:completionHint="请注意:点击列表自动播放"
-
+        android:background="@drawable/shape"
         />
+
     <Button
         android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
+        android:layout_width="30dp"
+        android:layout_height="20dp"
+        android:layout_above="@+id/webmusiclayout"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_alignBottom="@+id/edittext"
-        android:onClick="click"
-        />
-    <RelativeLayout
+        android:background="@drawable/icon_share"
+        android:onClick="click" />
 
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/localmusiclayout"
         android:layout_below="@+id/edittext"
         >
-        <!--<TextView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:id="@+id/localtext"-->
-            <!--android:text="本地搜索结果"-->
-
-            <!--/>-->
-        <!--<ListView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="500px"-->
-            <!--android:id="@+id/localmusiclist"-->
-            <!--android:layout_below="@+id/localtext"-->
-            <!--&gt;</ListView>-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="5px" />

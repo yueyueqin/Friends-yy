@@ -93,14 +93,14 @@ public class Information_fill extends FragmentActivity implements OnClickListene
 		timeData[1]="2";
 		timeData[2]="3";
 		timeData[3]="4";
-		timeData[5]="5";
-		timeData[6]="6";
-		timeData[7]="7";
-		timeData[8]="8";
-		timeData[9]="9";
-		timeData[10]="10";
-		timeData[11]="11";
-		timeData[12]="12";
+		timeData[4]="5";
+		timeData[5]="6";
+		timeData[6]="7";
+		timeData[7]="8";
+		timeData[8]="9";
+		timeData[9]="10";
+		timeData[10]="11";
+		timeData[11]="12";
 	}
 	private void initAlertDialog(){
 		View view = LayoutInflater.from(Information_fill.this).inflate(

@@ -1,124 +1,150 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingBottom="@dimen/activity_vertical_margin"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-    >
-    <!-- 创建一个看不见的布局获取焦点来取消TextView获得焦点-->
+<?xml version="1.0" encoding="utf-8"?><RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="0px"
         android:layout_height="0px"
         android:focusable="true"
-        android:focusableInTouchMode="true"/>
+        android:focusableInTouchMode="true" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/blurbg"
+        android:scaleType="centerCrop"
+        android:layout_above="@+id/imageBottom"/>
 
+    <TextView
+        android:id="@+id/music"
+        android:layout_below="@+id/edit_query"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="middle"
+        android:layout_centerHorizontal="true"
+        android:text="Retrograde"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:singleLine="true"/>
     <AutoCompleteTextView
         android:id="@+id/edit_query"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:completionHint="请注意:点击列表自动播放"
+        android:layout_height="30dp"
+        android:textColor="@color/color_red"
         android:completionThreshold="1"
-        android:singleLine="true"
-        />
-
-    <Button
-        android:id="@+id/serchbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/edit_query"
-        android:layout_alignParentRight="true"
-
-        android:text="网络歌曲查询"
+        android:background="@drawable/shape"
         />
 
     <RelativeLayout
-        android:id="@+id/listlayout"
+        android:id="@+id/layoutSet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edit_query"
+        android:layout_below="@+id/music"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp">
+
+        <com.cyan.library.InteractivePlayerView
+            android:id="@+id/ipv"
+            android:layout_width="230dp"
+            android:layout_height="260dp"
+            android:layout_centerInParent="true"
+            app:imageCover="@drawable/imagetest"
+            app:selectedAction1="@drawable/shuffle_selected"
+            app:selectedAction2="@drawable/like_selected"
+            app:selectedAction3="@drawable/replay_selected"
+            app:unselectedAction1="@drawable/shuffle_unselected"
+            app:unselectedAction2="@drawable/like_unselected"
+            app:unselectedAction3="@drawable/replay_unselected"
+
+            />
+
+
+
+        <ImageView
+            android:layout_toRightOf="@+id/ipv"
+            android:id="@+id/btn_next"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:onClick="click"
+            android:background="@drawable/icon_forward" />
+
+        <ImageView
+            android:layout_toLeftOf="@+id/ipv"
+            android:id="@+id/btn_last"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:onClick="click"
+            android:background="@drawable/icon_back" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/serchbutton"
+        android:layout_width="30dp"
+        android:layout_height="20dp"
+        android:layout_above="@+id/music"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/icon_share"
+        android:onClick="click" />
+
+    <ImageView
+        android:id="@+id/imageBottom"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:background="#262626"
+        android:layout_alignParentBottom="true"/>
+
+    <RelativeLayout
+        android:id="@+id/btn_play"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/circle"
+        android:layout_alignTop="@+id/imageBottom"
+        android:layout_marginTop="-30dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
         >
 
-        <ListView
-            android:id="@+id/listview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/relativelayout"
-            android:horizontalSpacing="20dp"
-            android:numColumns="auto_fit"
-            android:verticalSpacing="20dp"
-            ></ListView>
+        <ImageView
+            android:onClick="click"
+            android:id="@+id/control"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/play"/>
 
-        <RelativeLayout
-            android:id="@+id/relativelayout"
-            android:layout_width="match_parent"
-            android:layout_height="200px"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            >
-
-            <TextView
-                android:id="@+id/music"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="音乐"
-                />
-
-            <SeekBar
-                android:id="@+id/seekbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/music"
-                />
-
-            <Button
-                android:id="@+id/btn_last"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/seekbar"
-
-                android:text="上一曲"
-                />
-
-            <Button
-                android:id="@+id/btn_next"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/seekbar"
-                android:layout_toRightOf="@+id/btn_last"
-
-                android:text="下一曲"
-                />
-
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/seekbar"
-                android:layout_toRightOf="@+id/btn_next"
-                android:entries="@array/model"
-                ></Spinner>
-
-
-            <Button
-                android:id="@+id/btn_play"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:visibility="gone"
-                />
-
-            <Button
-                android:id="@+id/bendi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="clickprovide"
-                android:visibility="gone"/>
-        </RelativeLayout>
     </RelativeLayout>
-</RelativeLayout>
 
+    <TextView
+        android:id="@+id/listheader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="播放队列"
+        android:layout_alignTop="@+id/imageBottom"
+        android:layout_marginTop="3dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="15sp"
+        android:textColor="#EEEEEE"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/csy_green"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/listheader"/>
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@+id/imageBottom"
+        android:layout_marginTop="40dp"
+        android:textSize="18sp"/>
+
+</RelativeLayout>

@@ -8,11 +8,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-
-        <com.cyan.ui.ActionBar
-            android:id="@+id/actionbar_comment"
-            style="@style/ActionBar_car" />
+        <!--<com.cyan.ui.ActionBar-->
+            <!--android:id="@+id/actionbar_comment"-->
+            <!--style="@style/ActionBar_car" />-->
 
         <LinearLayout
             android:layout_width="0px"
@@ -72,8 +70,5 @@
             </android.support.v4.view.ViewPager>
 
         </LinearLayout>
-
-
-
     </LinearLayout>
 </ScrollView>

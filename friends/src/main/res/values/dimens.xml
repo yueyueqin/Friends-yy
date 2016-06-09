@@ -38,7 +38,7 @@
     <!--汽车信息录入界面部分-->
     <dimen name="actionbar_height">48dip</dimen>
     <dimen name="actionbar_item_width">48dip</dimen>
-
-
+    <!--引导界面部分-->
+    <dimen name="activity_zero_margin">0dp</dimen>
 
 </resources>

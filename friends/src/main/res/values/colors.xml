@@ -81,4 +81,9 @@
 
     <color name="title_color">#37BCB2</color>
     <color name="black6c">#CCCCCC</color>
+
+    <!--引导界面部分-->
+    <color name="theme_color">#D95555</color>
+
+    <color name="color_red">#F44336</color>
 </resources>

@@ -29,7 +29,7 @@ import java.util.List;
  */
 public class CarInfoActivity extends Activity implements AdapterView.OnItemSelectedListener, ViewPager.OnPageChangeListener {
 
- 
+
 
     //region 成员变量 ——数组
     private String[] pinpai = {
@@ -720,7 +720,7 @@ public class CarInfoActivity extends Activity implements AdapterView.OnItemSelec
 
         Spinner spinner = (Spinner) findViewById(R.id.carinfo_number);
         String[] carnumber = {"1", "2", "3"};
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, carnumber);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, carnumber);
         spinner.setAdapter(arrayAdapter);
         spinner.setOnItemSelectedListener(this);
 
@@ -729,14 +729,14 @@ public class CarInfoActivity extends Activity implements AdapterView.OnItemSelec
     private int brandnum = 0;//记录当前车辆型号
 
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-       
+
         //加载viewpager布局
         caruser_pageview = new ArrayList<View>();
         for (int i = 0; i <= position; i++) {
             View pagerview = viewlist1.get(position);
             caruser_pageview.add(i, pagerview);
         }
-        
+
         caruser_viewpager = (ViewPager) findViewById(R.id.caruser_viewpager);
         Mypageradapter mypageradapter = new Mypageradapter();
         caruser_viewpager.setAdapter(mypageradapter);
@@ -943,7 +943,7 @@ public class CarInfoActivity extends Activity implements AdapterView.OnItemSelec
                     thecarinfo[0][4] = caruser_engine0.getText().toString();
                     thecarinfo[0][5] = caruser_mileage0.getText().toString();
                     thecarinfo[0][6] = caruser_gasoline0.getText().toString();
-                   
+
                 }
             });
 
@@ -961,7 +961,7 @@ public class CarInfoActivity extends Activity implements AdapterView.OnItemSelec
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             switch (parent.getId()) {
                 case R.id.caruser_brand:
-                    ArrayAdapter arrayAdaptertype = new ArrayAdapter(CarInfoActivity.this, android.R.layout.simple_spinner_dropdown_item, xinghaolist[position]);
+                    ArrayAdapter arrayAdaptertype = new ArrayAdapter(CarInfoActivity.this, android.R.layout.simple_spinner_item, xinghaolist[position]);
                     caruser_type0.setAdapter(arrayAdaptertype);
                     caruser_sign0.setImageResource(sign[position]);
                     TextView brandtext = (TextView) view;
@@ -1023,7 +1023,7 @@ public class CarInfoActivity extends Activity implements AdapterView.OnItemSelec
             switch (parent.getId()) {
                 case R.id.caruser_brand:
 
-                    ArrayAdapter arrayAdaptertype = new ArrayAdapter(CarInfoActivity.this, android.R.layout.simple_spinner_dropdown_item, xinghaolist[position]);
+                    ArrayAdapter arrayAdaptertype = new ArrayAdapter(CarInfoActivity.this, android.R.layout.simple_spinner_item, xinghaolist[position]);
                     caruser_type[0].setAdapter(arrayAdaptertype);
                     caruser_sign[0].setImageResource(sign[position]);
                     TextView brandtext = (TextView) view;
@@ -1044,7 +1044,7 @@ public class CarInfoActivity extends Activity implements AdapterView.OnItemSelec
 
 
                 case R.id.caruser_brand1:
-                    ArrayAdapter arrayAdaptertype1 = new ArrayAdapter(CarInfoActivity.this, android.R.layout.simple_spinner_dropdown_item, xinghaolist[position]);
+                    ArrayAdapter arrayAdaptertype1 = new ArrayAdapter(CarInfoActivity.this, android.R.layout.simple_spinner_item, xinghaolist[position]);
                     caruser_type[1].setAdapter(arrayAdaptertype1);
                     caruser_sign[1].setImageResource(sign[position]);
                     TextView brandtext1 = (TextView) view;
@@ -1064,7 +1064,7 @@ public class CarInfoActivity extends Activity implements AdapterView.OnItemSelec
 
 
                 case R.id.caruser_brand2:
-                    ArrayAdapter arrayAdaptertype2 = new ArrayAdapter(CarInfoActivity.this, android.R.layout.simple_spinner_dropdown_item, xinghaolist[position]);
+                    ArrayAdapter arrayAdaptertype2 = new ArrayAdapter(CarInfoActivity.this, android.R.layout.simple_spinner_item, xinghaolist[position]);
                     caruser_type[2].setAdapter(arrayAdaptertype2);
                     caruser_sign[2].setImageResource(sign[position]);
                     TextView brandtext2 = (TextView) view;
