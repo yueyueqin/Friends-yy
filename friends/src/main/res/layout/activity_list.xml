@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="?attr/colorPrimaryDark">
 
-    <include layout="@layout/title_gas" />
+    <include layout="@layout/toolbar_layout" />
 
     <com.cyan.widget.recyclerview.EasyRecyclerView
         android:id="@+id/list"

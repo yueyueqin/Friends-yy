@@ -7,6 +7,7 @@
         <item name="colorAccent">@color/primary</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:fitsSystemWindows">true</item>
         <item name="backgroundColor">@color/background_color</item>
         <item name="itemBackgroundColor">@color/item_color</item>
         <item name="android:actionMenuTextAppearance">@style/ToolbarTitleAppearance</item>
@@ -18,6 +19,7 @@
         <item name="colorAccent">@color/primary</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:fitsSystemWindows">true</item>
         <item name="backgroundColor">@color/background_color_night</item>
         <item name="itemBackgroundColor">@color/item_color_night</item>
         <item name="android:actionMenuTextAppearance">@style/ToolbarTitleAppearance</item>
@@ -41,9 +43,13 @@
         <item name="windowActionBar">false</item>
         <item name="android:actionMenuTextAppearance">@style/ToolbarTitleAppearance</item>
         <item name="android:windowNoTitle">true</item>
+        <item name="android:fitsSystemWindows">true</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
     </style>
+
+
+
 
     <style name="AnimBottom" parent="@android:style/Animation">
         <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
@@ -246,5 +252,7 @@
 <item name="android:layout_height">0.1dp</item>
 <item name="android:background">@color/black6c</item>
 </style>
+
+
 
 </resources>

@@ -82,7 +82,7 @@ import rx.schedulers.Schedulers;
 
 
 /**
- * Created by Administrator on 2015/9/21.
+ * 发表信息界面ACtivity
  */
 
 @ActivityFragmentInject(

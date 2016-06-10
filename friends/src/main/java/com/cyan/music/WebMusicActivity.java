@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -48,6 +49,9 @@ public class WebMusicActivity extends Activity {
         setContentView(R.layout.musiclayout);
         final Button myBtn = (Button) this.findViewById(R.id.button1);
 
+        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
+       setTitle("网络查询");
+
         //获取传进来的本地音乐数据
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -55,7 +59,7 @@ public class WebMusicActivity extends Activity {
         nativepath = bundle.getStringArray("path");
         String serch = bundle.getString("serch");
         Log.e("bofang播放", "播放的曲目" + serch);
-        Log.e("本地的音乐信息", "sadas----" + nativename[1] + nativepath[1]);
+       // Log.e("本地的音乐信息", "sadas----" + nativename[0] + nativepath[0]);
         //设置传进来的搜索数据
         editText = (AutoCompleteTextView) findViewById(R.id.edittext);
         ArrayAdapter autoserch = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, nativename);
@@ -202,10 +206,12 @@ public class WebMusicActivity extends Activity {
     }
 
     //销毁操作
-    protected void onDestroy() {
+    public void onDestroy() {
         super.onDestroy();
         if (connection != null) {
             unbindService(connection);
+        }else {
+           this. finish();
         }
     }
 

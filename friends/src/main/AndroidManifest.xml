@@ -220,7 +220,8 @@
             android:supportsRtl="true"/>
         <activity
             android:name="com.cyan.music.WebMusicActivity"
-            android:theme="@style/BaseAppTheme.AppTheme" />
+            android:launchMode="singleTask"
+            android:theme="@style/TransparentTheme" />
         <!--Bmob支付部分Activity声明-->
         <activity
             android:name="com.cyan.ui.ScanpayActivity"
@@ -336,7 +337,8 @@
         <activity
             android:name="com.cyan.ui.FansActivity"
             android:launchMode="singleTask"
-            android:theme="@style/BaseAppTheme.AppTheme" />
+            android:theme="@style/TransparentTheme"
+           />
         <activity
             android:name="com.cyan.ui.RecordActivity"
             android:launchMode="singleTask"

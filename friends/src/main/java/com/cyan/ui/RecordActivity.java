@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
+import android.view.WindowManager;
 
 import com.cyan.adapter.RecordAdapter;
 import com.cyan.adapter.RecyclerArrayAdapter;
@@ -27,7 +28,8 @@ import de.greenrobot.daoexample.RecordDao;
         contentViewId = R.layout.activity_userinfo,
         toolbarTitle = R.string.record
 )
-public class RecordActivity extends BaseActivity {
+public class RecordActivity extends BaseActivity
+{
     @InjectView(R.id.list)
     EasyRecyclerView recordList;
     @InjectView(R.id.toolbar)
@@ -37,22 +39,26 @@ public class RecordActivity extends BaseActivity {
     private Cursor cursor;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
+
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         ButterKnife.inject(this);
         getRecords();
     }
 
 
-    private void getRecords(){
+    private void getRecords()
+    {
         recordList.setRefreshEnabled(false);
         recordList.showProgress();
         recordDao = MyApplication.getInstance().getDaoSession().getRecordDao();
         String textColumn = RecordDao.Properties.Id.columnName;
         String orderBy = textColumn + " DESC";
-        String where= RecordDao.Properties.User_id.columnName+" = '" + MyApplication.getInstance().getCurrentUser().getObjectId() + "'";
+        String where = RecordDao.Properties.User_id.columnName + " = '" + MyApplication.getInstance().getCurrentUser().getObjectId() + "'";
         cursor = MyApplication.getInstance().getDb().query(recordDao.getTablename(), recordDao.getAllColumns(), where, null, null, null, orderBy);
-        if (cursor.getCount()==0) {
+        if (cursor.getCount() == 0) {
             recordList.showEmpty();
             cursor.close();
             return;
@@ -65,9 +71,11 @@ public class RecordActivity extends BaseActivity {
             recordDao.readEntity(cursor, record, 0);
             recordAdapter.addAll(record);
         }
-        recordAdapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
+        recordAdapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener()
+        {
             @Override
-            public void onItemClick(int position) {
+            public void onItemClick(int position)
+            {
                 Log.i("record", "click");
                 Intent intent = new Intent(RecordActivity.this, ContentActivity.class);
                 intent.putExtra("type", recordAdapter.getData().get(position).getType());
@@ -77,11 +85,11 @@ public class RecordActivity extends BaseActivity {
 
             }
         });
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemHelper<Record>(recordDao,recordAdapter));
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemHelper<Record>(recordDao, recordAdapter));
         itemTouchHelper.attachToRecyclerView(recordList.getRecyclerView());
-            recordList.showRecycler();
-            recordList.setAdapter(recordAdapter);
-            cursor.close();
+        recordList.showRecycler();
+        recordList.setAdapter(recordAdapter);
+        cursor.close();
 
     }
 

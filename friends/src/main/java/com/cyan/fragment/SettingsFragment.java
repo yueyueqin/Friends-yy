@@ -6,11 +6,12 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.cyan.community.R;
-import com.cyan.bean.MyBmobInstallation;
 import com.cyan.app.MyApplication;
+import com.cyan.bean.MyBmobInstallation;
+import com.cyan.community.R;
 import com.cyan.util.RxBus;
 import com.cyan.util.SPUtils;
 import com.jenzz.materialpreference.SwitchPreference;
@@ -56,16 +57,19 @@ public class SettingsFragment extends PreferenceFragment {
                     }
                 }).start();
                 Glide.get(getActivity()).clearMemory();
+                Toast.makeText(getActivity(),"清理完成！",Toast.LENGTH_LONG).show();
          break;
                 case "message_key":
                 if (message.isChecked()) {
                     BmobInstallation.getCurrentInstallation(MyApplication.getInstance()).save(MyApplication.getInstance(), new SaveListener() {
                         @Override
                         public void onSuccess() {
-                            if(MyApplication.getInstance().getCurrentUser()!=null)
-                            refreshInstalllation(MyApplication.getInstance().getCurrentUser().getObjectId());
+                            if(MyApplication.getInstance().getCurrentUser()!=null) {
+                                refreshInstalllation(MyApplication.getInstance().getCurrentUser().getObjectId());
+                            }
                             else refreshInstalllation("0");
                             BmobPush.startWork(MyApplication.getInstance(), MyApplication.APPID);
+
 
                         }
 
@@ -80,11 +84,15 @@ public class SettingsFragment extends PreferenceFragment {
                     BmobInstallation.getCurrentInstallation(MyApplication.getInstance()).delete(getActivity(), (String) SPUtils.get(MyApplication.getInstance(), "settings", "installation", ""), new DeleteListener() {
                         @Override
                         public void onSuccess() {
+
+
                             Log.i("delete", "success");
                         }
 
                         @Override
                         public void onFailure(int i, String s) {
+
+
                             Log.i("fail", s);
                         }
                     });

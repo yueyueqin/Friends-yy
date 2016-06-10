@@ -8,6 +8,7 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.cyan.adapter.PostAdapter;
 import com.cyan.annotation.ActivityFragmentInject;
@@ -36,7 +37,8 @@ import cn.bmob.v3.listener.FindListener;
         contentViewId = R.layout.activity_userinfo,
         toolbarTitle = R.string.dynamic
 )
-public class PostListActivity extends RefreshActivity implements RefreshLayout.OnRefreshListener {
+public class PostListActivity extends RefreshActivity implements RefreshLayout.OnRefreshListener
+{
     @InjectView(R.id.toolbar)
     Toolbar toolbar;
     @InjectView(R.id.list)
@@ -50,14 +52,15 @@ public class PostListActivity extends RefreshActivity implements RefreshLayout.O
     private int post_num;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_userinfo);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         ButterKnife.inject(this);
 
-       setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-      getSupportActionBar().setTitle("动态");
+        getSupportActionBar().setTitle("动态");
         postList.setRefreshListener(this);
         postList.setLayoutManager(new LinearLayoutManager(this));
         postList.showProgress();
@@ -68,25 +71,28 @@ public class PostListActivity extends RefreshActivity implements RefreshLayout.O
     }
 
     @Override
-    public void onFooterRefresh() {
-      initQuery();
+    public void onFooterRefresh()
+    {
+        initQuery();
     }
 
     @Override
-    public void onHeaderRefresh() {
+    public void onHeaderRefresh()
+    {
 
     }
 
-    public void init() {
+    public void init()
+    {
         user = (User) getIntent().getExtras().get("user");
         post_num = getIntent().getIntExtra("post_num", 0);
         if (post_num > 10) {
             postList.setHeaderEnabled(false);
             postList.setFooterEnabled(true);
-           postList.setFooterRefrehingColorResources(android.R.color.holo_blue_bright,
-                   android.R.color.holo_green_light,
-                   android.R.color.holo_orange_light,
-                   android.R.color.holo_red_light);
+            postList.setFooterRefrehingColorResources(android.R.color.holo_blue_bright,
+                    android.R.color.holo_green_light,
+                    android.R.color.holo_orange_light,
+                    android.R.color.holo_red_light);
 
         } else
             postList.setRefreshEnabled(false);
@@ -99,17 +105,20 @@ public class PostListActivity extends RefreshActivity implements RefreshLayout.O
         else postList.showEmpty();
     }
 
-    public void initQuery() {
+    public void initQuery()
+    {
         BmobQuery<Post> query = new BmobQuery<>();
-        if(posts.size()>0)
-            query.addWhereLessThan("id",posts.get(posts.size() - 1).getId());
+        if (posts.size() > 0)
+            query.addWhereLessThan("id", posts.get(posts.size() - 1).getId());
         query.addWhereEqualTo("author", user);
         query.order("-id");
         query.setLimit(10);
         query.include("author");
-        query.findObjects(this, new FindListener<Post>() {
+        query.findObjects(this, new FindListener<Post>()
+        {
             @Override
-            public void onSuccess(List<Post> list) {
+            public void onSuccess(List<Post> list)
+            {
                 if (list.size() > 0) {
                     if (posts.size() == 0) {
                         flush(list);
@@ -121,9 +130,11 @@ public class PostListActivity extends RefreshActivity implements RefreshLayout.O
                         postAdapter.notifyDataSetChanged();
                     }
 
-                    postAdapter.setOnItemClickListener(new OnItemClickListener() {
+                    postAdapter.setOnItemClickListener(new OnItemClickListener()
+                    {
                         @Override
-                        public void onClick(View view, Object item) {
+                        public void onClick(View view, Object item)
+                        {
                             Intent intent = new Intent(PostListActivity.this, ContentActivity.class);
                             select_index = (Integer) item;
                             intent.putExtra("post", posts.get((Integer) item));
@@ -142,31 +153,38 @@ public class PostListActivity extends RefreshActivity implements RefreshLayout.O
             }
 
             @Override
-            public void onError(int i, String s) {
+            public void onError(int i, String s)
+            {
                 Log.i("onerror", "error");
                 postList.showError();
             }
 
             @Override
-            public void onFinish() {
+            public void onFinish()
+            {
                 postList.setFooterRefreshing(false);
             }
         });
     }
 
-    public void flush(final List<Post> posts) {
+    public void flush(final List<Post> posts)
+    {
         if (MyApplication.getInstance().getCurrentUser() != null) {
-            SimpleHandler.getInstance().post(new Runnable() {
+            SimpleHandler.getInstance().post(new Runnable()
+            {
                 @Override
-                public void run() {
+                public void run()
+                {
                     setPraise(posts);
                     setCollection(posts);
+
                 }
             });
         }
     }
 
-    public void setPraise(List<Post> list) {
+    public void setPraise(List<Post> list)
+    {
 
         for (final Post post : list) {
             if (MyApplication.getInstance().getCurrentUser() != null) {
@@ -178,9 +196,11 @@ public class PostListActivity extends RefreshActivity implements RefreshLayout.O
                 query.addWhereEqualTo("objectId", post.getObjectId());
                 query.addWhereContainsAll("praise_user_id", Arrays.asList(praise_user_id));
 
-                query.findObjects(getApplicationContext(), new FindListener<Post>() {
+                query.findObjects(getApplicationContext(), new FindListener<Post>()
+                {
                     @Override
-                    public void onSuccess(List<Post> list) {
+                    public void onSuccess(List<Post> list)
+                    {
                         if (list.size() > 0) {
                             is_praised.append(post.getId(), true);
                             Log.i("objectid", post.getId() + "");
@@ -193,7 +213,8 @@ public class PostListActivity extends RefreshActivity implements RefreshLayout.O
                     }
 
                     @Override
-                    public void onError(int i, String s) {
+                    public void onError(int i, String s)
+                    {
 
                     }
                 });
@@ -207,13 +228,15 @@ public class PostListActivity extends RefreshActivity implements RefreshLayout.O
     }
 
 
-    public void setCollection(List<Post> list) {
+    public void setCollection(List<Post> list)
+    {
         List<String> collect_post_id = new ArrayList<String>();
         collect_post_id = MyApplication.getInstance().getCurrentUser().getCollect_post_id();
         if (collect_post_id != null) {
             for (final Post post : list) {
                 if (collect_post_id.contains(post.getObjectId()))
                     is_collected.append(post.getId(), true);
+
                 else
                     is_collected.append(post.getId(), false);
                 postAdapter.notifyDataSetChanged();
@@ -223,7 +246,8 @@ public class PostListActivity extends RefreshActivity implements RefreshLayout.O
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
@@ -235,7 +259,8 @@ public class PostListActivity extends RefreshActivity implements RefreshLayout.O
     }
 
     @Override
-    protected void onNewIntent(Intent intent) {
+    protected void onNewIntent(Intent intent)
+    {
         super.onNewIntent(intent);
         Log.e("tag", "onNewINtent执行了");
         setIntent(intent);

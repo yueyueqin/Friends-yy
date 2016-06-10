@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
@@ -18,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cyan.community.R;
 
@@ -710,7 +710,7 @@ public class CarInfoActivity extends Activity implements AdapterView.OnItemSelec
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);//去掉标题栏
+       // requestWindowFeature(Window.FEATURE_NO_TITLE);//去掉标题栏
         setContentView(R.layout.carinfo_layout);
 
         viewlist1 = new ArrayList<View>();
@@ -928,6 +928,8 @@ public class CarInfoActivity extends Activity implements AdapterView.OnItemSelec
             light_choice_switch0 = (CheckBox) findViewById(R.id.light_choice_switch);
 
 
+
+
             ArrayAdapter arrayAdapterbrand = new ArrayAdapter(CarInfoActivity.this, android.R.layout.simple_spinner_item, pinpai);
             caruser_brand0.setAdapter(arrayAdapterbrand);
             caruser_brand0.setOnItemSelectedListener(this);
@@ -943,7 +945,13 @@ public class CarInfoActivity extends Activity implements AdapterView.OnItemSelec
                     thecarinfo[0][4] = caruser_engine0.getText().toString();
                     thecarinfo[0][5] = caruser_mileage0.getText().toString();
                     thecarinfo[0][6] = caruser_gasoline0.getText().toString();
-
+                    if(thecarinfo[0][3].equals("")||thecarinfo[0][4].equals("")||
+                            thecarinfo[0][5].equals("")||thecarinfo[0][6].equals("")){
+                        Toast.makeText(CarInfoActivity.this, "请完善信息", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        Toast.makeText(CarInfoActivity.this, "提交成功", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
 

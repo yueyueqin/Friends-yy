@@ -3,9 +3,9 @@ package com.cyan.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.cyan.adapter.FansAdapter;
 import com.cyan.adapter.RecyclerArrayAdapter;
@@ -34,8 +34,8 @@ import cn.bmob.v3.datatype.BmobPointer;
         toolbarTitle = R.string.fans
 )
 public class FansActivity extends BaseActivity implements RecyclerArrayAdapter.OnLoadMoreListener ,FocusView{
-    @InjectView(R.id.toolbar)
-    Toolbar toolbar;
+   /* @InjectView(R.id.toolbar)
+    Toolbar toolbar;*/
     @InjectView(R.id.list)
     EasyRecyclerView focusList;
     private User user;
@@ -46,7 +46,7 @@ public class FansActivity extends BaseActivity implements RecyclerArrayAdapter.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         ButterKnife.inject(this);
 
         focusList.setRefreshEnabled(false);

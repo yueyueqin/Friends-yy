@@ -349,7 +349,8 @@ public class MusicFragment extends PreferenceFragment
             control.setBackgroundResource(R.drawable.pause);
         }
     }
-    private boolean case2=true,case3;
+
+    private boolean case2=true,case3=true;
     private class MyActionClick implements OnActionClickedListener {
         @Override
         public void onActionClicked(int id) {
@@ -357,6 +358,16 @@ public class MusicFragment extends PreferenceFragment
                 case 1:
                     //Called when 1. action is clicked.
                     modelplay=1;
+                    if(case2){
+                        Toast.makeText(getActivity(),"列表循环",Toast.LENGTH_SHORT).show();
+                        case2=true;
+                        modelplay=1;
+                    }
+                    else{
+                        Toast.makeText(getActivity(),"单曲循环",Toast.LENGTH_SHORT).show();
+                        modelplay=0;
+                        case2=false;
+                    }
                     break;
                 case 2:
                     //Called when 2. action is clicked.
@@ -371,7 +382,18 @@ public class MusicFragment extends PreferenceFragment
                     break;
                 case 3:
                     //Called when 3. action is clicked.
+
+
+                if(case2){
+                    Toast.makeText(getActivity(),"单曲循环",Toast.LENGTH_SHORT).show();
+                    case2=true;
                     modelplay=0;
+                }
+                else{
+                    Toast.makeText(getActivity(),"列表循环",Toast.LENGTH_SHORT).show();
+                    modelplay=1;
+                    case2=false;
+                }
                     break;
                 default:
                     break;

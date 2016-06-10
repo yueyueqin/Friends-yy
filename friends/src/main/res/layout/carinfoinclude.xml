@@ -169,6 +169,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="100dp"
             android:ellipsize="end"
+            android:numeric="integer"
             android:maxLines="2"
             android:paddingBottom="8dip"
             android:paddingTop="8dip"
@@ -202,6 +203,7 @@
             android:layout_marginLeft="100dp"
             android:ellipsize="end"
             android:maxLines="2"
+            android:numeric="integer"
             android:paddingBottom="8dip"
             android:paddingTop="8dip"
             android:text="请输入发动机车号" />
@@ -235,6 +237,7 @@
             android:layout_marginLeft="100dp"
             android:ellipsize="end"
             android:maxLines="2"
+            android:numeric="integer"
             android:paddingBottom="8dip"
             android:paddingTop="8dip"
             android:text="请输入里程数" />
@@ -267,6 +270,7 @@
             android:layout_marginLeft="100dp"
             android:ellipsize="end"
             android:maxLines="2"
+            android:numeric="integer"
             android:paddingBottom="8dip"
             android:paddingTop="8dip"
             android:text="请输入汽油量" />

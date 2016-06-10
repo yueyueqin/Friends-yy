@@ -64,8 +64,11 @@
 
                 <android.support.v4.view.PagerTitleStrip
                     android:id="@+id/caruser_pagertitle"
+                    android:background="@color/actionbar_background_end"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"></android.support.v4.view.PagerTitleStrip>
+                    android:layout_height="wrap_content">
+
+                </android.support.v4.view.PagerTitleStrip>
 
             </android.support.v4.view.ViewPager>
 
