@@ -20,7 +20,7 @@ import com.baidu.mapapi.map.MyLocationConfiguration.LocationMode;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
 import com.cyan.community.R;
-
+//轨迹记录部分
 public class Footprint extends Activity {
 	// 定位相关
 	LocationClient mLocClient;

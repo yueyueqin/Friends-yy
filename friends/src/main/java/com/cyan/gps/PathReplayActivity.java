@@ -34,7 +34,7 @@ import com.cyan.community.R;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
+//轨迹回放
 public class PathReplayActivity extends Activity {
 
 	ExecutorService es = Executors.newFixedThreadPool(3);

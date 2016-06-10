@@ -12,7 +12,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 
 import com.cyan.community.R;
-
+//附近搜索部分
 public class Poidemo extends Activity {
 
 	private GridView gridView;

@@ -1,49 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:fab="http://schemas.android.com/apk/res-auto"
-              android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="起点：" />
+            android:text="起点："/>
 
         <com.cyan.gps.MyAutoCompleteTextView
             android:id="@+id/start"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:completionThreshold="1"
             android:ems="10"
-            android:text="我的位置"
-            android:completionThreshold="1" >
+            android:text="我的位置">
         </com.cyan.gps.MyAutoCompleteTextView>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="终点：" />
+            android:text="终点："/>
 
         <com.cyan.gps.MyAutoCompleteTextView
             android:id="@+id/end"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="请输入终点" >
+            android:hint="请输入终点">
 
-            <requestFocus />
+            <requestFocus/>
         </com.cyan.gps.MyAutoCompleteTextView>
     </LinearLayout>
 
@@ -52,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dip"
         android:layout_marginTop="5dip"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/drive"
@@ -63,7 +64,7 @@
             android:layout_weight="1.0"
             android:background="@drawable/button_style"
 
-            android:text="驾车搜索" />
+            android:text="驾车搜索"/>
 
         <Button
             android:id="@+id/transit"
@@ -74,7 +75,7 @@
             android:layout_weight="1.0"
             android:background="@drawable/button_style"
 
-            android:text="公交搜索" />
+            android:text="公交搜索"/>
 
         <Button
             android:id="@+id/walk"
@@ -85,18 +86,18 @@
             android:layout_weight="1.0"
             android:background="@drawable/button_style"
 
-            android:text="步行搜索" />
+            android:text="步行搜索"/>
     </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <com.baidu.mapapi.map.MapView
             android:id="@+id/map"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:clickable="true" />
+            android:clickable="true"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -106,7 +107,7 @@
             android:layout_alignWithParentIfMissing="false"
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dip"
-            android:orientation="vertical" >
+            android:orientation="vertical">
         </LinearLayout>
 
         <LinearLayout
@@ -117,7 +118,7 @@
             android:layout_alignWithParentIfMissing="false"
             android:layout_centerVertical="false"
             android:layout_marginBottom="10dip"
-            android:layout_marginLeft="80dp" >
+            android:layout_marginLeft="80dp">
 
             <Button
                 android:id="@+id/pre"
@@ -140,100 +141,24 @@
                 />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/linearLayout1">
+
+            <include layout="@layout/btns"/>
+        </LinearLayout>
+
         <Button
             android:id="@+id/bt_plan"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/linearLayout1"
             android:layout_marginRight="16dp"
-            android:layout_toLeftOf="@+id/linearLayout1"
             android:background="@drawable/button_style"
-
-            android:text="路线详情" />
+            android:text="路线详情"/>
     </RelativeLayout>
 
-    <com.github.clans.fab.FloatingActionMenu
-        android:id="@+id/menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        fab:menu_fab_size="normal"
-        fab:menu_showShadow="true"
-        fab:menu_shadowColor="#66000000"
-        fab:menu_shadowRadius="4dp"
-        fab:menu_shadowXOffset="1dp"
-        fab:menu_shadowYOffset="3dp"
-        fab:menu_colorNormal="#DA4336"
-        fab:menu_colorPressed="#E75043"
-        fab:menu_colorRipple="#99FFFFFF"
-        fab:menu_animationDelayPerItem="50"
-        fab:menu_icon="@drawable/fab_add"
-        fab:menu_buttonSpacing="0dp"
-        fab:menu_labels_margin="0dp"
-        fab:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
-        fab:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
-        fab:menu_labels_paddingTop="4dp"
-        fab:menu_labels_paddingRight="8dp"
-        fab:menu_labels_paddingBottom="4dp"
-        fab:menu_labels_paddingLeft="8dp"
-        fab:menu_labels_padding="8dp"
-        fab:menu_labels_textColor="#FFFFFF"
-        fab:menu_labels_textSize="14sp"
-        fab:menu_labels_cornerRadius="3dp"
-        fab:menu_labels_colorNormal="#333333"
-        fab:menu_labels_colorPressed="#444444"
-        fab:menu_labels_colorRipple="#66FFFFFF"
-        fab:menu_labels_showShadow="true"
-        fab:menu_labels_singleLine="false"
-        fab:menu_labels_ellipsize="none"
-        fab:menu_labels_maxLines="-1"
-        fab:menu_labels_style="@style/AppTheme_Mapmenu"
-        fab:menu_labels_position="left"
-        fab:menu_openDirection="up"
-        fab:menu_backgroundColor="@android:color/transparent"
-        fab:menu_fab_label="your_label_here"
-        fab:menu_fab_show_animation="@anim/my_show_animation"
-        fab:menu_fab_hide_animation="@anim/my_hide_animation">
 
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_item_footprint"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_star"
-            fab:fab_size="mini"
-            fab:fab_label="Menu item 1" />
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_item_positioning"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_star"
-            fab:fab_size="mini"
-            fab:fab_label="Menu item 2" />
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_item_near"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_star"
-            fab:fab_size="mini"
-            fab:fab_label="Menu item 3" />
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_item_offline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_star"
-            fab:fab_size="mini"
-            fab:fab_label="Menu item 4" />
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_item_playback"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_star"
-            fab:fab_size="mini"
-            fab:fab_label="Menu item 5" />
-
-    </com.github.clans.fab.FloatingActionMenu>
 </LinearLayout>

@@ -59,7 +59,7 @@
     <string name="demo_name_location">定位图层展示</string>
     <string name="demo_name_route">路径规划功能</string>
     <string name="demo_name_poi">POI搜索功能</string>
-    <string name="key_error">"请在  DemoApplication.java文件输入正确的授权Key！"</string>
+    <string name="key_error">"地图报错！"</string>
     <string name="location">定位</string>
     <string name="route_plan">路径规划</string>
     <string name="offline_map">离线地图</string>

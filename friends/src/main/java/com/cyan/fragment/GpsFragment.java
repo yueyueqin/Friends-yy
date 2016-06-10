@@ -57,6 +57,13 @@ import com.baidu.mapapi.search.sug.SuggestionResult;
 import com.baidu.mapapi.search.sug.SuggestionSearch;
 import com.baidu.mapapi.search.sug.SuggestionSearchOption;
 import com.cyan.community.R;
+import com.cyan.gps.Footprint;
+import com.cyan.gps.Location;
+import com.cyan.gps.OfflineDemo;
+import com.cyan.gps.PathReplayActivity;
+import com.cyan.gps.Poidemo;
+import com.lzp.floatingactionbuttonplus.FabTagLayout;
+import com.lzp.floatingactionbuttonplus.FloatingActionButtonPlus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,7 +80,7 @@ import java.util.List;
 public class GpsFragment extends PreferenceFragment implements
         BaiduMap.OnMapClickListener, OnGetRoutePlanResultListener, TextWatcher,
         OnGetSuggestionResultListener, View.OnClickListener
-{
+{ private FloatingActionButtonPlus mActionButtonPlus;
 
     private boolean isFirstLoc = true;
     private ArrayAdapter<String> sugAdapter = null;
@@ -170,13 +177,45 @@ public class GpsFragment extends PreferenceFragment implements
         //        return super.onCreateView(inflater, container, savedInstanceState);
         fragmentView = inflater.inflate(R.layout.activity_gps, null);
         initView(fragmentView);
+        events();
         return fragmentView;
 
     }
 
+    private void events()
+    {
+        mActionButtonPlus.setOnItemClickListener(new FloatingActionButtonPlus.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(FabTagLayout tagView, int position)
+            {
+                if (position==0){
+                    Intent intent=new Intent(getActivity(), OfflineDemo.class);
+                    startActivity(intent);
+                }
+                if (position==1){
+                    Intent intent=new Intent(getActivity(), PathReplayActivity.class);
+                    startActivity(intent);
+                }
+                if (position==2){
+                    Intent intent=new Intent(getActivity(), Location.class);
+                    startActivity(intent);
+                }
+                if (position==3){
+                    Intent intent=new Intent(getActivity(), Footprint.class);
+                    startActivity(intent);
+                }
+                if (position==4){
+                    Intent intent=new Intent(getActivity(), Poidemo.class);
+                    startActivity(intent);
+                }
+               // Toast.makeText(getActivity(), "Click btn" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
     private void initView(View fragmentRootView)
     {
-
+        mActionButtonPlus = (FloatingActionButtonPlus)fragmentRootView. findViewById(R.id.FabPlus);
 
         start = (AutoCompleteTextView) fragmentRootView.findViewById(R.id.start);
         end = (AutoCompleteTextView) fragmentRootView.findViewById(R.id.end);

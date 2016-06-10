@@ -1,5 +1,6 @@
 package com.cyan.gps;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,6 @@ import android.widget.TextView;
 
 import com.cyan.community.R;
 import com.cyan.fragment.GpsFragment;
-import com.cyan.ui.BaseActivity;
 
 /**
  * User: 杨月(1298375722@qq.com)
@@ -18,7 +18,7 @@ import com.cyan.ui.BaseActivity;
  * Time: 10:45
  * 类说明：
  */
-public class Routplan extends BaseActivity
+public class Routplan extends Activity
 {
 
     private ListView listView;
