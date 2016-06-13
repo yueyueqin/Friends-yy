@@ -18,7 +18,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -91,11 +90,11 @@ public class UserInfoActivity extends RefreshActivity implements RefreshLayout.O
     Button edit;
     TextView title;
     RelativeLayout content;
-    @InjectView(R.id.list)
+ @InjectView(R.id.list)
     EasyRecyclerView collectionList;
     @InjectView(R.id.toolbar_background)
     AlphaView toolbarBackground;
-    @InjectView(R.id.toolbar)
+   // @InjectView(R.id.toolbar)
     Toolbar toolbar;
     private User user;
     private static final int NOT_FOCUS = 0;
@@ -125,7 +124,9 @@ public class UserInfoActivity extends RefreshActivity implements RefreshLayout.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         ButterKnife.inject(this);
+        toolbar=(Toolbar)findViewById(R.id.toolbar);
         collectionList.setLayoutManager(new LinearLayoutManager(this));
         collectionList.setFooterRefrehingColorResources(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,

@@ -8,11 +8,43 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp" >
+         >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@color/title_color"
+
+            >
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:paddingLeft="16dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:visibility="visible"
+                android:src="@drawable/csy_arr_back" />
+
+            <TextView
+                android:id="@+id/tv_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="订单详情"
+                android:paddingLeft="100dp"
+                android:paddingTop="10dp"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+
+
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="16dp"
             android:background="@drawable/selector_settings_item_down"
             android:paddingBottom="8dp"
             android:paddingTop="8dp" >
@@ -37,6 +69,7 @@
      
         <RelativeLayout
             android:layout_width="match_parent"
+            android:padding="16dp"
             android:layout_height="wrap_content"
             android:background="@drawable/selector_settings_item_down"
             android:paddingBottom="8dp"
@@ -67,6 +100,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="8dp"
+            android:padding="16dp"
             android:paddingTop="8dp" >
 
             <TextView
@@ -91,6 +125,7 @@
       
         <RelativeLayout
             android:layout_width="match_parent"
+            android:padding="16dp"
             android:layout_height="wrap_content"
             android:background="@drawable/selector_settings_item_down"
             android:paddingBottom="8dp"
@@ -119,6 +154,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="8dp"
+            android:padding="16dp"
             android:paddingTop="8dp" >
 
             <TextView
@@ -142,6 +178,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="16dp"
             android:background="@drawable/selector_settings_item_down"
             android:paddingBottom="8dp"
             android:paddingTop="8dp" >
@@ -168,7 +205,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:padding="16dp">
 
                 <TextView
                     android:id="@+id/user_pay"
@@ -177,7 +215,7 @@
                     android:layout_height="44dp"
                     
                     android:layout_alignParentLeft="true"
-                    android:background="@drawable/selector_logout"
+                    android:background="@color/title_color"
                     android:gravity="center"
                     android:paddingBottom="12dip"
                     android:paddingTop="12dip"
@@ -190,7 +228,7 @@
                     android:layout_height="44dp"
                    
                     android:layout_alignParentRight="true"
-                    android:background="@drawable/selector_logout"
+                    android:background="@color/title_color"
                     android:gravity="center"
                     android:paddingBottom="12dip"
                     android:paddingTop="12dip"

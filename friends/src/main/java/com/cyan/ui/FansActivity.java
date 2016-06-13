@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 
 import com.cyan.adapter.FansAdapter;
 import com.cyan.adapter.RecyclerArrayAdapter;
@@ -46,7 +45,7 @@ public class FansActivity extends BaseActivity implements RecyclerArrayAdapter.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+      //  this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         ButterKnife.inject(this);
 
         focusList.setRefreshEnabled(false);

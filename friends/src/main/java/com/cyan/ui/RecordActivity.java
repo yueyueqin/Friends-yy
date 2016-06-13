@@ -7,7 +7,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
-import android.view.WindowManager;
 
 import com.cyan.adapter.RecordAdapter;
 import com.cyan.adapter.RecyclerArrayAdapter;
@@ -43,7 +42,7 @@ public class RecordActivity extends BaseActivity
     {
         super.onCreate(savedInstanceState);
 
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+       // this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         ButterKnife.inject(this);
         getRecords();
     }

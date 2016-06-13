@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.view.WindowManager;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +41,7 @@ public class Information_detail extends Activity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.information_details);
 
         BmobPay.init(this.getApplicationContext(), APPID);
@@ -65,7 +67,7 @@ public class Information_detail extends Activity
         orderd_model.setText(bundle.getString("model"));
         orderd_volume.setText(bundle.getString("volume"));
         orderd_total.setText(bundle.getString("total"));
-
+        Log.e("orderd_total金额是多少啊？？？", "" + orderd_total);
         order.setPrice(Double.parseDouble(orderd_total.getText().toString()));
         orderd_name.setText(bundle.getString("name"));
         user_pay.setOnClickListener(new OnClickListener()
@@ -92,10 +94,10 @@ public class Information_detail extends Activity
                 String model = orderd_model.getText().toString().trim();
                 String total = orderd_total.getText().toString().trim();
                 String contents = "BEGIN:VCARD\nVERSION:3.0\n" + "N:" + name
-                        + "\nNOTE:" + data+"\nORG:" + station_name +
-                         "\nTEL:" + model + "\nTITLE:" + volume+"\nADR:" + total
+                        + "\nNOTE:" + data + "\nORG:" + station_name +
+                        "\nTEL:" + model + "\nTITLE:" + volume + "\nADR:" + total
                         + "\nURL:";
-                Log.e("contents的内容是？？",""+contents);
+                Log.e("contents的内容是？？", "" + contents);
                 intent.putExtra("contents", contents);
 
 
@@ -136,10 +138,14 @@ public class Information_detail extends Activity
                     });
             choseDialog = new PopupWindow(typeDialog,
                     LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+            choseDialog.setBackgroundDrawable(getResources().getDrawable(
+                    R.drawable.bg_settings_item_down_pressed));
+            choseDialog.setOutsideTouchable(true);
         }
         Toast.makeText(this, "请选择支付方式", Toast.LENGTH_SHORT).show();
         choseDialog.showAtLocation((View) user_pay.getParent(),
                 Gravity.CENTER, 0, 0);
+
     }
 
     protected final View getRootView(Activity context)

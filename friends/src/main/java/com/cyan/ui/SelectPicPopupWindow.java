@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -20,7 +21,8 @@ import butterknife.OnClick;
 /**
  * Created by Administrator on 2015/10/23.
  */
-public class SelectPicPopupWindow extends Activity {
+public class SelectPicPopupWindow extends Activity
+{
     @InjectView(R.id.photo)
     Button photo;
     @InjectView(R.id.album)
@@ -28,25 +30,28 @@ public class SelectPicPopupWindow extends Activity {
     @InjectView(R.id.cancel)
     Button cancel;
     String file_path;
-boolean isCrop;
+    boolean isCrop;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.alert_dialog);
         ButterKnife.inject(this);
-        isCrop=getIntent().getBooleanExtra("isCrop",true);
+        isCrop = getIntent().getBooleanExtra("isCrop", true);
     }
 
     @OnClick(R.id.photo)
-    public void photo() {
+    public void photo()
+    {
         String status = Environment.getExternalStorageState();
         if (status.equals(Environment.MEDIA_MOUNTED)) {
 
 
-                Intent intent = new Intent(
-                        MediaStore.ACTION_IMAGE_CAPTURE);
+            Intent intent = new Intent(
+                    MediaStore.ACTION_IMAGE_CAPTURE);
 
-                startActivityForResult(intent, 2);
+            startActivityForResult(intent, 2);
 
         } else {
             Toast.makeText(SelectPicPopupWindow.this, "没有储存卡", Toast.LENGTH_SHORT)
@@ -55,7 +60,8 @@ boolean isCrop;
     }
 
     @OnClick(R.id.album)
-    public void album() {
+    public void album()
+    {
         Intent i = new Intent(
                 Intent.ACTION_GET_CONTENT,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -66,7 +72,8 @@ boolean isCrop;
     }
 
     @OnClick(R.id.cancel)
-    public void cancel() {
+    public void cancel()
+    {
         finish();
     }
 
@@ -75,7 +82,8 @@ boolean isCrop;
      *
      * @param uri
      */
-    public void startPhotoZoom(Uri uri) {
+    public void startPhotoZoom(Uri uri)
+    {
 
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setDataAndType(uri, "image/*");
@@ -94,15 +102,18 @@ boolean isCrop;
         startActivityForResult(intent, 3);
     }
 
+
+
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
         switch (requestCode) {
             // 如果是直接从相册获取
 
             case 1:
                 if (data != null) {
-                    if(isCrop)
-                    startPhotoZoom(data.getData());
+                    if (isCrop)
+                        startPhotoZoom(data.getData());
                     else {
                         Intent intent = new Intent();
                      /*   Uri originalUri=data.getData();
@@ -115,8 +126,8 @@ boolean isCrop;
                         cursor.moveToFirst();
                         //最后根据索引值获取图片路径
                         String path = cursor.getString(column_index);*/
-                        String path= Utils.getPath(this,data);
-                        intent.putExtra("path",path);
+                        String path = Utils.getPath(this, data);
+                        intent.putExtra("path", path);
                         setResult(RESULT_OK, intent);
                         finish();
                     }
@@ -125,16 +136,20 @@ boolean isCrop;
             // 如果是调用相机拍照时
 
             case 2:
-                if(data!=null) {
+                if (data != null) {
                     if (isCrop)
                         startPhotoZoom(data.getData());
-                    else
-                    {
+                    else {
+
+
                         Intent intent = new Intent();
-                        Uri originalUri=data.getData();
-                        String[] proj =  { MediaStore.Images.Media.DATA };
+
+                        Uri originalUri = data.getData();
+                        String[] proj = {MediaStore.Images.Media.DATA};
                         //好像是android多媒体数据库的封装接口，具体的看Android文档
-                        Cursor cursor = getContentResolver().query(originalUri, proj, null, null, null);
+                        Log.e("originalUri是多少啊。。。。", "" + originalUri);
+                        Log.e("proj。。。。", "" + proj);
+                        Cursor cursor = this.getContentResolver().query(originalUri, proj, null, null, null);
                         //按我个人理解 这个是获得用户选择的图片的索引值
                         int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
                         //将光标移至开头 ，这个很重要，不小心很容易引起越界
@@ -142,9 +157,10 @@ boolean isCrop;
                         //最后根据索引值获取图片路径
                         String path = cursor.getString(column_index);
 
-                        intent.putExtra("path",path);
+                        intent.putExtra("path", path);
                         setResult(RESULT_OK, intent);
                         finish();
+
                     }
                 }
                 break;
@@ -156,7 +172,7 @@ boolean isCrop;
                     Bundle extras = data.getExtras();
                     if (extras != null) {
                         // photo = extras.getParcelable("data");
-//                 Drawable drawable = new BitmapDrawable(photo);
+                        //                 Drawable drawable = new BitmapDrawable(photo);
 
                         /**
 

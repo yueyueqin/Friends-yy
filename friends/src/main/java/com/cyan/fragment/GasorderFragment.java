@@ -57,7 +57,7 @@ public class GasorderFragment extends PreferenceFragment implements View.OnClick
     private LocationClient mLocationClient = null;
     private BDLocationListener mListener = new MyLocationListener();
 
-    private ImageView iv_list, iv_loc;
+    private ImageView iv_list, iv_loc,image;
     private Toast mToast;
     private TextView tv_title_right, tv_name, tv_distance, tv_price_a, tv_price_b;
     private LinearLayout ll_summary;
@@ -105,6 +105,8 @@ public class GasorderFragment extends PreferenceFragment implements View.OnClick
         iv_list.setOnClickListener(this);
         iv_loc = (ImageView) fragmentRootView.findViewById(R.id.iv_loc);
         iv_loc.setOnClickListener(this);
+        image=(ImageView)fragmentRootView.findViewById(R.id.imageview);
+        image.setOnClickListener(this);
         tv_title_right = (TextView) fragmentRootView.findViewById(R.id.tv_title_button);
         tv_title_right.setText("3km" + " >");
         tv_title_right.setVisibility(View.VISIBLE);
@@ -305,7 +307,7 @@ public class GasorderFragment extends PreferenceFragment implements View.OnClick
                 }
 
                 break;
-            case R.id.tv_title_button:
+            case R.id.imageview:
                 showSelectDialog();
                 break;
             case R.id.ll_summary:

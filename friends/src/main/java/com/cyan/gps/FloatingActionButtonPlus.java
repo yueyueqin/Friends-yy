@@ -207,7 +207,7 @@ public class FloatingActionButtonPlus extends ViewGroup {
                         break;
                 }
 
-                childView.layout(fl, ft, fl + childWidth, ft + childHeight);
+                childView.layout(fl+100, ft+100, fl + childWidth+100, ft + childHeight+100);
                 bindChildEvents(childView, i);
                 prepareAnim(childView, i);
             }

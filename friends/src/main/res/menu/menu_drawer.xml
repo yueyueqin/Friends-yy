@@ -3,31 +3,31 @@
     <group >
         <item
             android:id="@+id/nav_messages"
-            android:icon="@drawable/ic_forum_grey600_24dp"
+            android:icon="@drawable/ic_message"
             android:title="消息" />
         <item
             android:id="@+id/nav_gps"
-            android:icon="@drawable/ic_forum_grey600_24dp"
+            android:icon="@drawable/ic_daohang"
             android:title="导航" />
         <item
             android:id="@+id/nav_gasorder"
-            android:icon="@drawable/ic_forum_grey600_24dp"
+            android:icon="@drawable/ic_order"
             android:title="预约加油" />
         <item
             android:id="@+id/nav_scanpay"
-            android:icon="@drawable/ic_forum_grey600_24dp"
+            android:icon="@drawable/ic_scanpay"
             android:title="扫码支付" />
         <item
             android:id="@+id/nav_violation"
-            android:icon="@drawable/ic_forum_grey600_24dp"
+            android:icon="@drawable/ic_v"
             android:title="违章查询" />
         <item
             android:id="@+id/nav_music"
-            android:icon="@drawable/ic_forum_grey600_24dp"
+            android:icon="@drawable/ic_music"
             android:title="音乐" />
         <item
             android:id="@+id/nav_collection"
-            android:icon="@drawable/ic_action_fav_normal"
+            android:icon="@drawable/ic_action_menu_1"
             android:title="收藏"/>
 
         <item

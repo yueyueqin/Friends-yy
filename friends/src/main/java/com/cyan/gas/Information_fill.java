@@ -57,6 +57,7 @@ public class Information_fill extends FragmentActivity implements OnClickListene
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.information_fill);
 		order_timepicker = (TextView) findViewById(R.id.order_timepicker);
 		order_timepicker.setOnClickListener(this);

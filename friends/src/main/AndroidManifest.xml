@@ -66,6 +66,8 @@
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <!-- SDK1.5需要android.permission.GET_TASKS权限判断本程序是否为当前运行的应用? -->
     <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
 
     <application
         android:name="com.cyan.app.MyApplication"
@@ -85,11 +87,19 @@
        <!-- 高德地图定位密钥-->
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="34eb8cca796df07a03c48ff840db76d8"
+            android:value="dd8f73abbdc8c3faf32a6546ff01a251"
                            />
         <!-- 定位需要的服务 -->
         <service android:name="com.amap.api.location.APSService"></service>
 
+
+        <!-- 移动统计分析 -->
+        <meta-data
+            android:name="IFLYTEK_APPKEY"
+            android:value="'test2014'" />
+        <meta-data
+            android:name="IFLYTEK_CHANNEL"
+            android:value="Android_Demo" />
 
         <activity
             android:name="com.cyan.ui.SplashActivity"
@@ -104,6 +114,7 @@
             android:name="com.cyan.ui.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|fontScale"
             android:theme="@style/BaseAppTheme.AppTheme">
 
             <intent-filter>
@@ -143,9 +154,16 @@
             android:process=":remote">
         </service>
 
-
+        <!--<receiver android:name="com.cyan.music.roadcastReceiver"
+                  android:label="@string/app_name">
+            　 <intent-filter>
+            　   <action android:name="android.intent.action.BOOT_COMPLETED" />
+            　   <category android:name="android.intent.category.LAUNCHER" />
+            　 </intent-filter>
+        </receiver>-->
         <service android:enabled="true"
-                 android:name="com.cyan.music.MusicService" />
+                 android:name="com.cyan.music.MusicService" >
+        </service>
         <!--Bmob支付部分声明-->
        <!-- <activity
             android:name="c.b.a.A"
@@ -217,6 +235,7 @@
             android:name="com.cyan.ui.MusicActivity"
             android:theme="@style/BaseAppTheme.AppTheme"
             android:allowBackup="true"
+            android:windowSoftInputMode="adjustPan"
             android:supportsRtl="true"/>
         <activity
             android:name="com.cyan.music.WebMusicActivity"
@@ -243,10 +262,10 @@
         <!--预约加油信息填写Activity声明-->
         <activity
             android:name="com.cyan.gas.Information_fill"
-            android:theme="@android:style/Theme.Translucent" />
+            android:theme="@style/BaseAppTheme.AppTheme" />
         <activity
             android:name="com.cyan.gas.Information_detail"
-            android:theme="@android:style/Theme.Translucent" />
+            android:theme="@style/BaseAppTheme.AppTheme" />
         <activity
             android:name="com.cyan.gas.Qr_codeActivity"
             android:theme="@style/BaseAppTheme.AppTheme"   />
@@ -262,15 +281,20 @@
         <activity
             android:name="com.cyan.gas.Result"
             android:theme="@style/BaseAppTheme.AppTheme" />
-
-
+        <!--语音听写模块-->
+        <activity android:name="com.cyan.manager.IatSettings"
+                  android:theme="@style/BaseAppTheme.AppTheme" >
+        </activity>
 
 
 
         <activity
             android:name="com.cyan.ui.LoginActivity"
             android:theme="@style/BaseAppTheme.AppTheme"
-            android:windowSoftInputMode="stateHidden|adjustResize">
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"
+            >
+        <!--android:windowSoftInputMode="stateHidden|adjustResize"-->
+
 
         </activity>
         <activity
@@ -342,7 +366,7 @@
         <activity
             android:name="com.cyan.ui.RecordActivity"
             android:launchMode="singleTask"
-            android:theme="@style/BaseAppTheme.AppTheme" />
+            android:theme="@style/TransparentTheme" />
         <activity
             android:name="com.cyan.ui.AboutActivity"
             android:launchMode="singleTask"

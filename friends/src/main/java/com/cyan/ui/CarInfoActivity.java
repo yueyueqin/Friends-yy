@@ -799,6 +799,13 @@ public class CarInfoActivity extends Activity implements AdapterView.OnItemSelec
                         thecarinfo[0][4] = caruser_engine[0].getText().toString();
                         thecarinfo[0][5] = caruser_mileage[0].getText().toString();
                         thecarinfo[0][6] = caruser_gasoline[0].getText().toString();
+                        if(thecarinfo[2][3].equals("")||thecarinfo[2][4].equals("")||
+                                thecarinfo[2][5].equals("")||thecarinfo[2][6].equals("")){
+                            Toast.makeText(CarInfoActivity.this, "请完善信息", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Toast.makeText(CarInfoActivity.this, "提交成功", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
                 break;
@@ -830,6 +837,13 @@ public class CarInfoActivity extends Activity implements AdapterView.OnItemSelec
                         thecarinfo[1][4] = caruser_engine[1].getText().toString();
                         thecarinfo[1][5] = caruser_mileage[1].getText().toString();
                         thecarinfo[1][6] = caruser_gasoline[1].getText().toString();
+                        if(thecarinfo[2][3].equals("")||thecarinfo[2][4].equals("")||
+                                thecarinfo[2][5].equals("")||thecarinfo[2][6].equals("")){
+                            Toast.makeText(CarInfoActivity.this, "请完善信息", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Toast.makeText(CarInfoActivity.this, "提交成功", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
                 break;
@@ -861,6 +875,13 @@ public class CarInfoActivity extends Activity implements AdapterView.OnItemSelec
                         thecarinfo[2][4] = caruser_engine[2].getText().toString();
                         thecarinfo[2][5] = caruser_mileage[2].getText().toString();
                         thecarinfo[2][6] = caruser_gasoline[2].getText().toString();
+                        if(thecarinfo[2][3].equals("")||thecarinfo[2][4].equals("")||
+                                thecarinfo[2][5].equals("")||thecarinfo[2][6].equals("")){
+                            Toast.makeText(CarInfoActivity.this, "请完善信息", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Toast.makeText(CarInfoActivity.this, "提交成功", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
                 break;
@@ -952,6 +973,10 @@ public class CarInfoActivity extends Activity implements AdapterView.OnItemSelec
                     else{
                         Toast.makeText(CarInfoActivity.this, "提交成功", Toast.LENGTH_SHORT).show();
                     }
+
+
+
+
                 }
             });
 

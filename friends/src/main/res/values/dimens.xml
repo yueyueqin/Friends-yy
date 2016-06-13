@@ -41,4 +41,13 @@
     <!--引导界面部分-->
     <dimen name="activity_zero_margin">0dp</dimen>
 
+    <!--语音听写部分-->
+    <dimen name="margin_">10dp</dimen>
+    <dimen name="pading_">5dp</dimen>
+    <dimen name="btn_size">22sp</dimen>
+    <dimen name="txt_size">18sp</dimen>
+
+    <!-- 分割线高度 -->
+    <dimen name="line_height">1dp</dimen>
+
 </resources>

@@ -8,7 +8,6 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 
 import com.cyan.adapter.PostAdapter;
 import com.cyan.annotation.ActivityFragmentInject;
@@ -55,7 +54,7 @@ public class PostListActivity extends RefreshActivity implements RefreshLayout.O
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         ButterKnife.inject(this);
 
         setSupportActionBar(toolbar);

@@ -18,7 +18,7 @@
             android:paddingTop="12dp"
             android:paddingBottom="12dp"
             android:visibility="gone"
-            android:src="@drawable/back" />
+            android:src="@drawable/csy_arr_back" />
 
         <TextView
             android:id="@+id/tv_order"

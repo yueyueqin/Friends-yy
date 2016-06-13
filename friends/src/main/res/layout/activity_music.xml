@@ -28,9 +28,11 @@
         android:singleLine="true"/>
     <AutoCompleteTextView
         android:id="@+id/edit_query"
+        android:hint="音乐搜索"
+        android:textSize="30dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:textColor="@color/color_red"
+        android:textColor="#FFFFFF"
         android:completionThreshold="1"
         android:background="@drawable/shape"
         />
@@ -84,8 +86,8 @@
 
     <ImageView
         android:id="@+id/serchbutton"
-        android:layout_width="30dp"
-        android:layout_height="20dp"
+        android:layout_width="50dp"
+        android:layout_height="15dp"
         android:layout_above="@+id/music"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"

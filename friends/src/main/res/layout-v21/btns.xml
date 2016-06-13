@@ -9,7 +9,7 @@
     app:switchFabIcon="@mipmap/ic_add_white_48dp">
 //离线地图包下载
     <com.lzp.floatingactionbuttonplus.FabTagLayout
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         app:tagText="Download">
 
@@ -22,7 +22,7 @@
     </com.lzp.floatingactionbuttonplus.FabTagLayout>
 //轨迹记录
     <com.lzp.floatingactionbuttonplus.FabTagLayout
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         app:tagText="Trajectory">
 
@@ -36,7 +36,7 @@
 
     //定位
     <com.lzp.floatingactionbuttonplus.FabTagLayout
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         app:tagText="Location">
 
@@ -49,7 +49,7 @@
     </com.lzp.floatingactionbuttonplus.FabTagLayout>
 //轨迹回放
     <com.lzp.floatingactionbuttonplus.FabTagLayout
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         app:tagText="Playback">
 
@@ -62,7 +62,7 @@
     </com.lzp.floatingactionbuttonplus.FabTagLayout>
 //附近搜索
     <com.lzp.floatingactionbuttonplus.FabTagLayout
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         app:tagText="Search Around">
 

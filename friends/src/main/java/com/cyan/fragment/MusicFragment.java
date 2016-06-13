@@ -109,12 +109,21 @@ public class MusicFragment extends PreferenceFragment
         @Override
         public void onReceive(Context context, Intent intent)
         {
+            String ACTION = "android.intent.action.BOOT_COMPLETED";
+            if (intent.getAction().equals(ACTION)) {
+                context.startService(intent);
+
+                Toast.makeText(context, "OlympicsReminder service has started!", Toast.LENGTH_LONG).show();
+            }
+
             music.setText(intent.getExtras().getString("music"));
         }
     };
 
+
     // 开始界面
-    public void startthisActivity() {
+    public void startthisActivity()
+    {
 
         // 播放本地歌曲 如果本地没有音乐 点击网络搜索
         Cursor();
@@ -131,9 +140,11 @@ public class MusicFragment extends PreferenceFragment
             edit_query.setAdapter(autotextview);
             // 自动完成文本弹出框点击事件
             edit_query
-                    .setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    .setOnItemClickListener(new AdapterView.OnItemClickListener()
+                    {
                         public void onItemClick(AdapterView<?> parent,
-                                                View view, int position, long id) {
+                                                View view, int position, long id)
+                        {
                             for (int i = 0; i < name.length; i++) {
                                 TextView sousuo = (TextView) view;
                                 serchname[0] = sousuo.getText().toString();
@@ -153,7 +164,8 @@ public class MusicFragment extends PreferenceFragment
     }
 
     // 本地文件查询并且加载自动搜索文本框
-    public void Cursor() {
+    public void Cursor()
+    {
         Cursor cursor = getActivity().getContentResolver().query(
                 MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, null, null, null,
                 MediaStore.Audio.Media.DEFAULT_SORT_ORDER);
@@ -179,22 +191,26 @@ public class MusicFragment extends PreferenceFragment
     }
 
     // 服务连接 循环播放模式
-    class MyServiceConnection implements ServiceConnection {
+    class MyServiceConnection implements ServiceConnection
+    {
         // 连接成功执行这个方法
-        public void onServiceConnected(ComponentName name, IBinder service) {
+        public void onServiceConnected(ComponentName name, IBinder service)
+        {
             MusicService.musicBinder binder = (MusicService.musicBinder) service;
             mService = binder.getService();// 获取播放音乐的服务
             mediaPlayer = mService.player;
             toplay();
             if (mediaPlayer != null) {
-                ipv.setMax(mediaPlayer.getDuration()/1000);
+                ipv.setMax(mediaPlayer.getDuration() / 1000);
                 ipv.setProgress(0);
             }
             // 循环播放模式
             mediaPlayer
-                    .setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    .setOnCompletionListener(new MediaPlayer.OnCompletionListener()
+                    {
                         @Override
-                        public void onCompletion(MediaPlayer mp) {
+                        public void onCompletion(MediaPlayer mp)
+                        {
                             if (modelplay == 0) {
                                 toplay();
                             } else {
@@ -204,19 +220,23 @@ public class MusicFragment extends PreferenceFragment
                     });
         }
 
-        public void onServiceDisconnected(ComponentName name) {
+        public void onServiceDisconnected(ComponentName name)
+        {
         }
     }
 
     // 列表显示及点击事件
-    public void gridview() {
-        Myadapter  baseadapter = new Myadapter (getActivity(), name);
+    public void gridview()
+    {
+        Myadapter baseadapter = new Myadapter(getActivity(), name);
         listView.setAdapter(baseadapter);
         // 列表单击事件
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
+                                    int position, long id)
+            {
                 current = position;
                 toplay();
             }
@@ -224,7 +244,8 @@ public class MusicFragment extends PreferenceFragment
     }
 
     // 销毁操作
-    public void onDestroy() {
+    public void onDestroy()
+    {
         super.onDestroy();
         if (conn != null) {
             getActivity().unbindService(conn);
@@ -233,9 +254,11 @@ public class MusicFragment extends PreferenceFragment
     }
 
     // 播放控制
-    private class click implements View.OnClickListener {
+    private class click implements View.OnClickListener
+    {
         @Override
-        public void onClick(View v) {
+        public void onClick(View v)
+        {
             switch (v.getId()) {
                 case R.id.control:
                     // 暂停 开始
@@ -277,7 +300,8 @@ public class MusicFragment extends PreferenceFragment
         }
     }
 
-    public void click(View v) {
+    public void click(View v)
+    {
         switch (v.getId()) {
             case R.id.control:
                 // 暂停 开始
@@ -335,7 +359,8 @@ public class MusicFragment extends PreferenceFragment
         }
     }
 
-    public void toplay() {
+    public void toplay()
+    {
         if (count == 0) {
             click(serchbutton);
         } else {
@@ -343,40 +368,41 @@ public class MusicFragment extends PreferenceFragment
             mService.play(path[current]);
             ipv.stop();
 
-            ipv.setMax(mediaPlayer.getDuration()/1000);
+            ipv.setMax(mediaPlayer.getDuration() / 1000);
             ipv.setProgress(0);
             ipv.start();
             control.setBackgroundResource(R.drawable.pause);
         }
     }
 
-    private boolean case2=true,case3=true;
-    private class MyActionClick implements OnActionClickedListener {
+    private boolean case2 = true, case3 = true;
+
+    private class MyActionClick implements OnActionClickedListener
+    {
         @Override
-        public void onActionClicked(int id) {
+        public void onActionClicked(int id)
+        {
             switch (id) {
                 case 1:
                     //Called when 1. action is clicked.
-                    modelplay=1;
-                    if(case2){
-                        Toast.makeText(getActivity(),"列表循环",Toast.LENGTH_SHORT).show();
-                        case2=true;
-                        modelplay=1;
-                    }
-                    else{
-                        Toast.makeText(getActivity(),"单曲循环",Toast.LENGTH_SHORT).show();
-                        modelplay=0;
-                        case2=false;
+                    modelplay = 1;
+                    if (case2) {
+                        Toast.makeText(getActivity(), "列表循环", Toast.LENGTH_SHORT).show();
+                        case2 = true;
+                        modelplay = 1;
+                    } else {
+                        Toast.makeText(getActivity(), "单曲循环", Toast.LENGTH_SHORT).show();
+                        modelplay = 0;
+                        case2 = false;
                     }
                     break;
                 case 2:
                     //Called when 2. action is clicked.
-                    if(case2){
-                        Toast.makeText(getActivity(),"添加喜爱成功",Toast.LENGTH_SHORT).show();
-                        case2=false;
-                    }
-                    else{
-                        Toast.makeText(getActivity(),"取消添加喜爱",Toast.LENGTH_SHORT).show();
+                    if (case2) {
+                        Toast.makeText(getActivity(), "添加喜爱成功", Toast.LENGTH_SHORT).show();
+                        case2 = false;
+                    } else {
+                        Toast.makeText(getActivity(), "取消添加喜爱", Toast.LENGTH_SHORT).show();
                     }
 
                     break;
@@ -384,22 +410,22 @@ public class MusicFragment extends PreferenceFragment
                     //Called when 3. action is clicked.
 
 
-                if(case2){
-                    Toast.makeText(getActivity(),"单曲循环",Toast.LENGTH_SHORT).show();
-                    case2=true;
-                    modelplay=0;
-                }
-                else{
-                    Toast.makeText(getActivity(),"列表循环",Toast.LENGTH_SHORT).show();
-                    modelplay=1;
-                    case2=false;
-                }
+                    if (case2) {
+                        Toast.makeText(getActivity(), "单曲循环", Toast.LENGTH_SHORT).show();
+                        case2 = true;
+                        modelplay = 0;
+                    } else {
+                        Toast.makeText(getActivity(), "列表循环", Toast.LENGTH_SHORT).show();
+                        modelplay = 1;
+                        case2 = false;
+                    }
                     break;
                 default:
                     break;
             }
         }
     }
+
     //保证这个Activity不被销毁
     public boolean onKeyDown(int keyCode, KeyEvent event)
     {

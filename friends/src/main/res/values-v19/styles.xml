@@ -12,4 +12,14 @@
         <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
 
     </style>
+
+
+   <!-- &lt;!&ndash;ToolBar部分&ndash;&gt;
+    &lt;!&ndash;Android 4.4 &ndash;&gt;
+
+    &lt;!&ndash;ColorTranslucentTheme&ndash;&gt;
+    <style name="ColorTranslucentTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>-->
 </resources>

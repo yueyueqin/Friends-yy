@@ -86,4 +86,18 @@
     <color name="theme_color">#D95555</color>
 
     <color name="color_red">#F44336</color>
+
+    <!--语音听写部分-->
+    <!-- 画面背景色 -->
+    <drawable name="layout_backgroud">#000000</drawable>
+
+    <!-- 分割线背景色 -->
+    <drawable name="line_background">#161823</drawable>
+
+
+    <!-- 控件按下时显示的颜色 -->
+    <color name="list_backgroud_color">#2fb3cb</color>
+
+    <color name="content_color">#737373</color>
+
 </resources>

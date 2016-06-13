@@ -31,4 +31,17 @@
         <!--<item name="android:textStyle">normal</item>-->
 
     </style>
+
+
+   <!-- &lt;!&ndash;ToolBar部分&ndash;&gt;
+    &lt;!&ndash;Android 5.0以上版本&ndash;&gt;
+
+    &lt;!&ndash;ColorTranslucentTheme&ndash;&gt;
+    <style name="ColorTranslucentTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:statusBarColor">@color/transparent</item>
+    </style>
+-->
+
 </resources>

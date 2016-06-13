@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_zero_margin"
     android:paddingRight="@dimen/activity_zero_margin"
     android:paddingTop="@dimen/activity_zero_margin"
-    tools:context=".SplashActivity"
+    tools:context="com.cyan.ui.SplashActivity"
     android:background="@color/theme_color" >
 	<TextView 
 	    android:id="@+id/logo_name"
@@ -26,7 +26,7 @@
 	    android:layout_centerHorizontal="true"
 	    android:layout_alignParentBottom="true"
 	    android:layout_marginBottom="8dip"
-	    android:text="Bmob,让移动开发更简单!"
+	    android:text="车友，你的朋友!"
 	    android:textColor="#FFFFFF"
 	    android:textSize="16sp"
 	    />
